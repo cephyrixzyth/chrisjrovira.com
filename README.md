@@ -32,7 +32,7 @@ This is a static site: publish `index.html`, `styles.css`, `app.js`, `content.js
 
 ## Analytics
 
-The Oneirodex marketing site uses Cloudflare Web Analytics. This site includes the same provider through `analytics.js`. The loader is wired, but tracking stays off until a separate Cloudflare Web Analytics token is created for `chrisjrovira.com` and placed in `analytics-config.js`:
+The Oneirodex marketing site uses Cloudflare Web Analytics. This site includes the same provider through `analytics.js`. The loader uses the site-specific Cloudflare Web Analytics token configured in `analytics-config.js`:
 
 ```js
 window.SITE_ANALYTICS_TOKEN = "YOUR_CHRISJROVIRA_COM_TOKEN";
