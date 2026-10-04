@@ -4,6 +4,10 @@
   const experienceList = document.querySelector("#experience-list");
   const skillCloud = document.querySelector("#skill-cloud");
   const credentialsList = document.querySelector("#credentials-list");
+  const storyMedia = document.querySelector("#story-media");
+  const storyDetail = document.querySelector("#story-detail");
+  const storyIndex = document.querySelector("#story-index");
+  const storyCount = document.querySelector("#story-count");
 
   const projectCard = (project) => `
     <article class="project-card ${project.featured ? "project-featured" : ""}" data-category="${project.category}">
@@ -31,6 +35,73 @@
     projectGrid.classList.toggle("is-filtered", filter !== "all");
   }
 
+  function storyPoster(story, index) {
+    return `
+      <div class="story-poster ${story.visual}" role="img" aria-label="Artwork for ${story.shortTitle}; a full-width video can be added for this story">
+        <div class="story-poster-grid" aria-hidden="true"></div>
+        <span class="story-poster-brand mono">CJR <i>·</i> FIELD NOTES</span>
+        <span class="story-poster-number" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
+        <div class="story-poster-copy"><span class="mono">${story.eyebrow}</span><strong>${story.shortTitle}</strong></div>
+        <span class="story-poster-hint"><i aria-hidden="true"></i> No clip linked yet · story first</span>
+      </div>`;
+  }
+
+  function renderStory(index = 0) {
+    if (!content.stories?.length || !storyMedia || !storyDetail || !storyIndex || !storyCount) return;
+    const story = content.stories[index];
+    const media = story.media;
+    let mediaMarkup = storyPoster(story, index);
+    if (media?.type === "video" && media.src) {
+      const poster = media.poster ? ` poster="${media.poster}"` : "";
+      mediaMarkup = `<video class="story-video" controls playsinline preload="metadata"${poster}><source src="${media.src}" />Your browser does not support embedded video.</video>`;
+    } else if (media?.type === "embed" && media.src) {
+      mediaMarkup = `<iframe class="story-video" src="${media.src}" title="${story.title}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+    }
+    storyMedia.innerHTML = mediaMarkup;
+    storyDetail.innerHTML = `
+      <div class="story-detail-top"><p class="eyebrow"><span class="eyebrow-line"></span>${story.eyebrow}</p><p class="story-highlight">${story.highlight}</p></div>
+      <h3>${story.title}</h3>
+      <div class="story-detail-copy">${story.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>
+      ${story.links?.length ? `<div class="story-detail-links" aria-label="Related links">${story.links.map((link) => `<a class="text-link" href="${link.url}" target="_blank" rel="noreferrer">${link.label} <span aria-hidden="true">↗</span></a>`).join("")}</div>` : ""}`;
+    storyCount.textContent = `STORY ${String(index + 1).padStart(2, "0")} OF ${String(content.stories.length).padStart(2, "0")}`;
+    storyIndex.querySelectorAll("[data-story-index]").forEach((button) => {
+      const active = Number(button.dataset.storyIndex) === index;
+      button.setAttribute("aria-pressed", String(active));
+      button.classList.toggle("is-active", active);
+      if (active) {
+        const track = button.parentElement;
+        const left = button.offsetLeft - track.offsetLeft - (track.clientWidth - button.clientWidth) / 2;
+        track.scrollTo({ left, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      }
+    });
+    storyMedia.dataset.activeStory = story.id;
+  }
+
+  function renderStoryIndex() {
+    if (!storyIndex || !content.stories?.length) return;
+    storyIndex.innerHTML = content.stories.map((story, index) => `
+      <button class="story-index-item ${index === 0 ? "is-active" : ""}" type="button" data-story-index="${index}" aria-pressed="${index === 0}">
+        <span class="story-index-number mono">${String(index + 1).padStart(2, "0")}</span>
+        <span class="story-index-copy"><strong>${story.shortTitle}</strong><span>${story.eyebrow}</span></span>
+        <span class="story-index-arrow" aria-hidden="true">↗</span>
+      </button>`).join("");
+    storyIndex.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-story-index]");
+      if (button) renderStory(Number(button.dataset.storyIndex));
+    });
+    storyIndex.addEventListener("keydown", (event) => {
+      if (!(["ArrowLeft", "ArrowRight"].includes(event.key))) return;
+      const current = event.target.closest("[data-story-index]");
+      if (!current) return;
+      event.preventDefault();
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      const next = (Number(current.dataset.storyIndex) + direction + content.stories.length) % content.stories.length;
+      renderStory(next);
+      storyIndex.querySelector(`[data-story-index="${next}"]`)?.focus();
+    });
+    renderStory();
+  }
+
   function renderExperience() {
     experienceList.innerHTML = content.experience.map((item, index) => `
       <article class="timeline-item ${item.current ? "is-current" : ""}">
@@ -44,6 +115,7 @@
   }
 
   renderProjects();
+  renderStoryIndex();
   renderExperience();
   skillCloud.innerHTML = content.skills.map((skill) => `<span>${skill}</span>`).join("");
   credentialsList.innerHTML = content.credentials.map((item) => `<li>${item}</li>`).join("");
@@ -59,13 +131,22 @@
     });
   });
 
+  document.querySelector("#story-previous")?.addEventListener("click", () => {
+    const active = Number(storyMedia?.dataset.activeStory ? content.stories.findIndex((story) => story.id === storyMedia.dataset.activeStory) : 0);
+    renderStory((active - 1 + content.stories.length) % content.stories.length);
+  });
+  document.querySelector("#story-next")?.addEventListener("click", () => {
+    const active = Number(storyMedia?.dataset.activeStory ? content.stories.findIndex((story) => story.id === storyMedia.dataset.activeStory) : 0);
+    renderStory((active + 1) % content.stories.length);
+  });
+
   const root = document.documentElement;
   const themePicker = document.querySelector(".theme-picker");
   const themeOptions = [...document.querySelectorAll("[data-theme-option]")];
   const availableThemes = new Set(themeOptions.map((option) => option.dataset.themeOption));
   let savedTheme = "dark";
   try {
-    const storedTheme = localStorage.getItem("cr-theme");
+    const storedTheme = localStorage.getItem("cjr-theme") || localStorage.getItem("cr-theme");
     if (availableThemes.has(storedTheme)) savedTheme = storedTheme;
   } catch {}
   function setTheme(theme) {
@@ -74,7 +155,7 @@
     themeOptions.forEach((option) => option.setAttribute("aria-pressed", String(option.dataset.themeOption === theme)));
     const themeColor = getComputedStyle(root).getPropertyValue("--bg").trim();
     document.querySelector('meta[name="theme-color"]')?.setAttribute("content", themeColor);
-    try { localStorage.setItem("cr-theme", theme); } catch {}
+    try { localStorage.setItem("cjr-theme", theme); } catch {}
   }
   setTheme(savedTheme);
   themeOptions.forEach((option) => option.addEventListener("click", () => {
@@ -139,7 +220,7 @@
     sections.forEach((section) => observer.observe(section));
   }
 
-  const revealItems = document.querySelectorAll(".fact, .project-card, .story-step, .timeline-item, .expertise-panel");
+  const revealItems = document.querySelectorAll(".fact, .project-card, .story-viewer, .timeline-item, .expertise-panel");
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {

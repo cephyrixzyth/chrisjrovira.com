@@ -58,6 +58,77 @@ window.PORTFOLIO_CONTENT = {
       featured: false
     }
   ],
+  stories: [
+    {
+      id: "roku-operations",
+      shortTitle: "The work behind playback",
+      eyebrow: "ROKU · CURRENT ROLE",
+      title: "The quiet work between partner delivery and playback.",
+      highlight: "LIVE · ON DEMAND · SVOD · AVOD",
+      paragraphs: [
+        "At Roku, my work sits across internal tools, partner workflows, CDN monitoring and integrations, and operational support for The Roku Channel.",
+        "That work is often a chain of handoffs. My focus is on helping teams see what comes next so the experience can feel simple on the viewer’s side."
+      ],
+      visual: "story-art-operations",
+      media: null
+    },
+    {
+      id: "att-live-launch",
+      shortTitle: "1,000+ live channels",
+      eyebrow: "LAUNCH SUPPORT · AT&T TV NOW / AT&T TV",
+      title: "Getting a live lineup ready for a new home.",
+      highlight: "1,000+ LIVE CHANNELS · 11-MARKET BETA",
+      paragraphs: [
+        "I supported the AT&T TV NOW and AT&T TV launches, including a launch with more than 1,000 live channels and a beta rollout across 11 key markets.",
+        "The headline was the scale. The day-to-day work was getting content, partner details, metadata, and teams aligned so a complicated lineup could arrive as one service."
+      ],
+      visual: "story-art-launch",
+      media: null
+    },
+    {
+      id: "regional-sports",
+      shortTitle: "Regional sports rights",
+      eyebrow: "METADATA · REGIONAL SPORTS NETWORKS",
+      title: "Making availability travel with the schedule.",
+      highlight: "SCTE 224 · RIGHTS-AWARE WORKFLOWS",
+      paragraphs: [
+        "I integrated SCTE 224 workflows for regional sports networks, bringing rights and availability information into the delivery process.",
+        "When a game is only available in certain places or windows, that context matters as much as the video file. Getting those details into the right workflow helps partners and platforms make the experience clearer."
+      ],
+      visual: "story-art-sports",
+      media: null
+    },
+    {
+      id: "international-delivery",
+      shortTitle: "One catalog, many destinations",
+      eyebrow: "PARTNER DELIVERY · VIACOM INTERNATIONAL",
+      title: "Taking digital video from the edit to more screens.",
+      highlight: "VOD · DTO · SVOD · INTERNATIONAL",
+      paragraphs: [
+        "At Viacom International, I led digital video delivery and post-production work for transactional and subscription partners, while onboarding partners and supporting international distribution.",
+        "Services in that mix included Netflix, iTunes, and Amazon. Moving from the edit suite into partner delivery taught me to keep the creative intent and the technical requirements in view at the same time."
+      ],
+      visual: "story-art-international",
+      media: null
+    },
+    {
+      id: "creative-roots",
+      shortTitle: "From the edit bay onward",
+      eyebrow: "EARLIER CREDITS · EDITING & POST",
+      title: "Before the platform, there was the picture and the sound.",
+      highlight: "VIDEO EDITING · AUDIO · POST-PRODUCTION",
+      paragraphs: [
+        "I started close to the craft—editing, audio engineering, and post-production across studio, freelance, and film work. That gave me an eye for what quality looks like and an ear for the small things a viewer notices.",
+        "That creative foundation still shapes how I approach operations: delivery is part of the story, and the systems behind it should protect the work rather than get in its way."
+      ],
+      visual: "story-art-craft",
+      media: null,
+      links: [
+        { label: "IMDb · nm2474609", url: "https://www.imdb.com/name/nm2474609/" },
+        { label: "IMDb · nm8298914", url: "https://www.imdb.com/name/nm8298914/" }
+      ]
+    }
+  ],
   experience: [
     {
       company: "Roku",

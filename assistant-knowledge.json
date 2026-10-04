@@ -15,7 +15,23 @@
       "title": "Current work at Roku",
       "source": "Portfolio experience profile · confirm details before expanding",
       "sourceUrl": "https://www.linkedin.com/in/chrisjrovira/",
-      "content": "Chris's portfolio lists him as a Technical Operations Manager at Roku since November 2020. The profile describes work across internal tools, partner workflows, live and on-demand experiences, CDN monitoring and integrations, and operational support for The Roku Channel. Specific launches and individual contributions should be added only after Chris confirms them."
+      "content": "Chris's portfolio lists him as a Technical Operations Manager at Roku since November 2020. The profile describes work across internal tools, partner workflows, live and on-demand experiences, CDN monitoring and integrations, and operational support for The Roku Channel. Specific Roku launch participation, including This Old House, Howdy, and individual TRC channel launches, is not yet confirmed and should not be attributed to Chris until he identifies his involvement."
+    },
+    {
+      "id": "att-live-launch",
+      "lane": "about",
+      "title": "AT&T TV live-channel launch and beta rollout",
+      "source": "Résumé-based portfolio story · AT&T Entertainment Group",
+      "sourceUrl": "https://www.linkedin.com/in/chrisjrovira/",
+      "content": "As an Integration Manager and Content & Programming Manager at AT&T Entertainment Group, Chris supported the AT&T TV NOW and AT&T TV launches. His profile notes a launch with more than 1,000 live channels and a beta rollout across 11 key markets. This describes launch support and team scale; it does not claim sole ownership or add an unverified business outcome."
+    },
+    {
+      "id": "att-scte224",
+      "lane": "about",
+      "title": "SCTE 224 workflows for regional sports networks",
+      "source": "Résumé-based portfolio story · AT&T Entertainment Group",
+      "sourceUrl": "https://www.linkedin.com/in/chrisjrovira/",
+      "content": "Chris integrated SCTE 224 workflows for regional sports networks. That integration work connected rights and availability information with the metadata and delivery processes that determine when and where programming can be shown. The profile does not assign a specific network or quantified outcome."
     },
     {
       "id": "att-career",

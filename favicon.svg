@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="15" fill="#121117" />
-  <path d="M31 18c-10.4 0-16.8 6.2-16.8 15.1 0 9.2 6.4 15 16.8 15 5.8 0 10.4-2 13.5-5.8l-6.3-5c-1.7 2.2-3.8 3.3-6.8 3.3-4.5 0-7.4-3-7.4-7.5 0-4.7 2.9-7.5 7.4-7.5 2.9 0 5.1 1.1 6.8 3.3l6.3-5C41.4 20 36.8 18 31 18Z" fill="#d8b4fe" />
-  <circle cx="51" cy="45" r="5" fill="#fb7185" />
+  <text x="32" y="40" text-anchor="middle" fill="#d8b4fe" font-family="Arial, sans-serif" font-size="23" font-weight="800" letter-spacing="-1.4">CJR</text>
+  <circle cx="51" cy="46" r="3" fill="#fb7185" />
 </svg>

@@ -10,7 +10,7 @@ Then open `http://localhost:8000`.
 
 ## Content updates
 
-Edit `content.js` to add or revise projects, work history, skills, and training. Roku project cards are structured separately from their presentation so future examples can be added without changing the layout. Add new Roku project examples after Chris confirms his involvement.
+Edit `content.js` to add or revise projects, the featured story reel, work history, skills, and training. Story chapters are shown one at a time with a horizontally scrollable title index. Each story can later include one full-width media source (`media: { type: "video", src: "/media/clip.mp4", poster: "/media/poster.webp" }`) or an approved video embed (`media: { type: "embed", src: "https://www.youtube-nocookie.com/embed/VIDEO_ID" }`). Until Chris supplies a clip, the chapter uses designed artwork in the same player-sized frame. Add Roku launch stories only after Chris confirms his involvement; public launch announcements alone do not establish attribution.
 
 The old Google Sites page lists the current Roku title as **Technical Operations Manager**, starting November 2020, and has the expanded Roku responsibilities and launch highlights. The résumé archive includes additional detail for earlier roles and training. The archived 2021 résumé PDF is not linked because it predates the current profile information.
 
@@ -28,7 +28,7 @@ Dark is the default. Visitors can choose Light, Forest, Ocean, Sunset, or Lavend
 
 ## Publishing
 
-GitHub Pages publishes this static site from the root of `main`. The `CNAME` file maps it to `chrisjrovira.com`.
+GitHub Pages publishes this static site from the root of `main`. The `CNAME` file maps it to `chrisjrovira.com`; HTTPS enforcement and the custom-domain certificate are active.
 
 Porkbun DNS now points the apex to GitHub Pages and `www` to `cephyrixzyth.github.io`; nameservers were left as configured. GitHub reports a successful Pages build. HTTPS enforcement is pending certificate issuance after DNS propagation. Preserve any existing mail records if DNS is changed later.
 ## Analytics
