@@ -26,10 +26,11 @@ The page uses those patterns for its opening statement, project cards, career ti
 
 Dark is the default. Visitors can choose Light, Forest, Ocean, Sunset, or Lavender. Their choice is stored in the browser.
 
-## Porkbun publishing
+## Publishing
 
-This is a static site: publish `index.html`, `styles.css`, `app.js`, `content.js`, `assistant.js`, `assistant-config.js`, `assistant-knowledge.json`, `analytics.js`, `analytics-config.js`, and `favicon.svg` to the hosting document root. The domain currently uses Porkbun nameservers, but its apex has no address record, so it needs a hosting target and DNS configuration before it can resolve to this site. Keep existing email records when updating DNS.
+GitHub Pages publishes this static site from the root of `main`. The `CNAME` file maps it to `chrisjrovira.com`.
 
+Porkbun DNS now points the apex to GitHub Pages and `www` to `cephyrixzyth.github.io`; nameservers were left as configured. GitHub reports a successful Pages build. HTTPS enforcement is pending certificate issuance after DNS propagation. Preserve any existing mail records if DNS is changed later.
 ## Analytics
 
 The Oneirodex marketing site uses Cloudflare Web Analytics. This site includes the same provider through `analytics.js`. The loader uses the site-specific Cloudflare Web Analytics token configured in `analytics-config.js`:
