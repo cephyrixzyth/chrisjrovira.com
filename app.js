@@ -153,8 +153,17 @@
     if (!availableThemes.has(theme)) return;
     root.dataset.theme = theme;
     themeOptions.forEach((option) => option.setAttribute("aria-pressed", String(option.dataset.themeOption === theme)));
-    const themeColor = getComputedStyle(root).getPropertyValue("--bg").trim();
+    const themeStyles = getComputedStyle(root);
+    const themeColor = themeStyles.getPropertyValue("--bg").trim();
     document.querySelector('meta[name="theme-color"]')?.setAttribute("content", themeColor);
+    const favicon = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+    if (favicon) {
+      const background = themeStyles.getPropertyValue("--bg-soft").trim();
+      const accent = themeStyles.getPropertyValue("--accent").trim();
+      const accent2 = themeStyles.getPropertyValue("--accent-2").trim();
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="15" fill="${background}"/><text x="32" y="40" text-anchor="middle" fill="${accent}" font-family="Arial,sans-serif" font-size="23" font-weight="800" letter-spacing="-1.4">CJR</text><circle cx="51" cy="46" r="3" fill="${accent2}"/></svg>`;
+      favicon.href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
+    }
     try { localStorage.setItem("cjr-theme", theme); } catch {}
   }
   setTheme(savedTheme);
