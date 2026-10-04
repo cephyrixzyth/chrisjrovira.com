@@ -2,9 +2,10 @@ import knowledge from "../assistant-knowledge.json";
 
 const MODEL = "@cf/zai-org/glm-4.7-flash";
 const DAILY_REQUEST_CAP = 100;
+const HOURLY_REQUEST_CAP_PER_VISITOR = 16;
 const MAX_MESSAGE_CHARS = 700;
 const MAX_CONTEXT_CHARS = 7600;
-const MAX_ANSWER_TOKENS = 300;
+const MAX_ANSWER_TOKENS = 2400;
 const ALLOWED_ORIGINS = new Set([
   "https://chrisjrovira.com",
   "https://www.chrisjrovira.com",
@@ -115,13 +116,35 @@ export default {
           { role: "user", content: prompt }
         ],
         max_completion_tokens: MAX_ANSWER_TOKENS,
+        reasoning_effort: "low",
         temperature: 0.45,
         stream: false
       });
-      const answer = typeof result?.response === "string" ? result.response.trim() : "";
-      if (!answer) throw new Error("The model returned no answer.");
+      const modelText = typeof result?.response === "string"
+        ? result.response
+        : result?.choices?.[0]?.message?.content;
+      const answer = typeof modelText === "string" ? modelText.trim() : "";
+      if (result?.choices?.[0]?.finish_reason === "length") {
+        console.warn("Virtual Chris Workers AI reached its completion limit", {
+          usage: result?.usage,
+          contentLength: answer.length
+        });
+      }
+      if (!answer) {
+        console.error("Virtual Chris Workers AI returned an unexpected response shape", {
+          keys: Object.keys(result || {}),
+          choiceKeys: Object.keys(result?.choices?.[0] || {}),
+          messageKeys: Object.keys(result?.choices?.[0]?.message || {}),
+          finishReason: result?.choices?.[0]?.finish_reason,
+          contentLength: typeof result?.choices?.[0]?.message?.content === "string" ? result.choices[0].message.content.length : null,
+          reasoningLength: typeof result?.choices?.[0]?.message?.reasoning_content === "string" ? result.choices[0].message.reasoning_content.length : null,
+          usage: result?.usage
+        });
+        throw new Error("The model returned no answer.");
+      }
       return json({ answer, sources: publicSources(matches), grounded: true }, 200, origin);
-    } catch {
+    } catch (error) {
+      console.error("Virtual Chris Workers AI request failed", error instanceof Error ? error.name : "unknown error");
       return json({ error: "The guide is having a brief pause. Try again in a little while." }, 502, origin);
     }
   }
@@ -143,7 +166,7 @@ export class DailyBudget {
       const saved = await tx.get(key);
       const state = saved?.date === today ? saved : { date: today, total: 0, ips: {} };
       const ipUsage = state.ips[ipHash];
-      if (state.total >= DAILY_REQUEST_CAP || (ipUsage?.hour === hour && ipUsage.count >= 8)) return false;
+      if (state.total >= DAILY_REQUEST_CAP || (ipUsage?.hour === hour && ipUsage.count >= HOURLY_REQUEST_CAP_PER_VISITOR)) return false;
       state.total += 1;
       state.ips[ipHash] = { hour, count: ipUsage?.hour === hour ? ipUsage.count + 1 : 1 };
       await tx.put(key, state);
