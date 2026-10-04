@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "career-throughline",
+      "lane": "about",
+      "title": "From post-production to streaming operations",
+      "source": "Portfolio career profile",
+      "sourceUrl": "https://www.linkedin.com/in/chrisjrovira/",
+      "content": "Chris Rovira has spent more than twenty years across media and technology. He began close to the craft in video editing, audio engineering, and post-production, then moved toward partner integrations, content delivery, and streaming operations. The through-line is making complex handoffs easier for the teams doing the work and the viewers at the end of it."
+    },
+    {
+      "id": "roku-role",
+      "lane": "about",
+      "title": "Current work at Roku",
+      "source": "Portfolio experience profile · confirm details before expanding",
+      "sourceUrl": "https://www.linkedin.com/in/chrisjrovira/",
+      "content": "Chris's portfolio lists him as a Technical Operations Manager at Roku since November 2020. The profile describes work across internal tools, partner workflows, live and on-demand experiences, CDN monitoring and integrations, and operational support for The Roku Channel. Specific launches and individual contributions should be added only after Chris confirms them."
+    },
+    {
+      "id": "att-career",
+      "lane": "about",
+      "title": "Partner integrations and platform launches",
+      "source": "Portfolio career profile · AT&T Entertainment Group",
+      "sourceUrl": "https://www.linkedin.com/in/chrisjrovira/",
+      "content": "At AT&T Entertainment Group, Chris worked as an Integration Manager and Content & Programming Manager from November 2016 to February 2020. The portfolio profile notes DIRECTV NOW and AT&T TV launch support, live channel onboarding, and SCTE 224 workflows for regional sports networks."
+    },
+    {
+      "id": "viacom-career",
+      "lane": "about",
+      "title": "Digital video and international distribution",
+      "source": "Portfolio career profile · Viacom International",
+      "sourceUrl": "https://www.linkedin.com/in/chrisjrovira/",
+      "content": "At Viacom International, Chris worked in partner management and supervising editing for VOD, DTO, and SVOD between March 2011 and September 2016. His profile describes leading editor and delivery workflows, onboarding partners, and supporting international distribution for services including Netflix, iTunes, and Amazon."
+    },
+    {
+      "id": "media-ops-approach",
+      "lane": "about",
+      "title": "How Chris approaches media operations",
+      "source": "Portfolio operating principle",
+      "sourceUrl": "https://chrisjrovira.com/#about",
+      "content": "Chris brings technical detail and human context into the same conversation. His operating principle is to make handoffs feel invisible: people know what comes next, systems stay dependable, and viewers stay with the story. His earlier editing and post-production experience helps him keep quality and the audience in view while teams work through tools, metadata, deadlines, and delivery requirements."
+    },
+    {
+      "id": "rag-basics",
+      "lane": "learn",
+      "title": "RAG in one minute",
+      "source": "Lewis et al., Retrieval-Augmented Generation (2020)",
+      "sourceUrl": "https://arxiv.org/abs/2005.11401",
+      "content": "Retrieval-Augmented Generation (RAG) combines a language model with an external collection of knowledge. First retrieve relevant passages for a question, then add those passages to the model's context, then generate an answer grounded in them. Retrieval supplies changeable or private-to-the-project knowledge without retraining the language model. A useful analogy from streaming operations: find the right approved assets and metadata before assembling the final delivery."
+    },
+    {
+      "id": "rag-pipeline",
+      "lane": "learn",
+      "title": "The RAG pipeline: prepare, retrieve, ground",
+      "source": "OpenAI File Search guide · concepts apply beyond the OpenAI product",
+      "sourceUrl": "https://developers.openai.com/api/docs/guides/tools-file-search",
+      "content": "A practical retrieval pipeline starts with trusted source documents. Split them into coherent chunks, keep useful metadata such as source and date, and index the chunks for search. At question time, retrieve a small set of relevant chunks, give those chunks to the language model as reference material, and show citations. Keeping the source and metadata attached is like preserving asset identity and version information through a media delivery workflow."
+    },
+    {
+      "id": "embeddings",
+      "lane": "learn",
+      "title": "Embeddings and semantic search",
+      "source": "Cloudflare Workers AI · text embeddings",
+      "sourceUrl": "https://developers.cloudflare.com/workers-ai/models/embedding/",
+      "content": "An embedding maps text into a numeric vector whose position captures aspects of meaning. A vector search can find a passage that means something similar even when it uses different words from the question. Keyword search is still useful for exact names, titles, channel brands, dates, and acronyms. Many practical systems combine semantic and keyword search, then rerank a short list before generation."
+    },
+    {
+      "id": "rag-evaluation",
+      "lane": "learn",
+      "title": "How to evaluate a RAG assistant",
+      "source": "RAGAS · evaluation framework for RAG systems",
+      "sourceUrl": "https://arxiv.org/abs/2309.15217",
+      "content": "Evaluate retrieval and answer generation separately. Retrieval should return useful, relevant passages; the answer should respond to the question, stay faithful to retrieved evidence, and say when the evidence is missing. Keep a small set of realistic questions, expected source passages, and unsupported questions as an evaluation set. For a career assistant, test whether it refuses to invent a launch contribution as well as whether it can explain a documented one."
+    },
+    {
+      "id": "ml-vs-rag",
+      "lane": "learn",
+      "title": "RAG is not model training",
+      "source": "Lewis et al., Retrieval-Augmented Generation (2020)",
+      "sourceUrl": "https://arxiv.org/abs/2005.11401",
+      "content": "RAG usually does not change the model's learned weights. It retrieves relevant material at answer time and puts it in the prompt. Fine-tuning changes model weights to shape behavior or task performance; it is not the right way to keep a résumé or project list current. Keep fast-changing facts in the retrieval library, and use carefully reviewed fine-tuning only when you need consistent task behavior that prompts cannot provide."
+    }
+  ]
+}
