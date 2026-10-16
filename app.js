@@ -15,7 +15,7 @@
         <div class="visual-grid" aria-hidden="true"></div>
         <div class="visual-mark" aria-hidden="true">${project.mark}</div>
         <span class="visual-number mono">${project.number} / ${String(content.projects.length).padStart(2, "0")}</span>
-        ${project.id === "roku-ops" ? `<div class="visual-pills"><span>ASSETS</span><span>METADATA</span><span>DELIVERY</span></div><div class="visual-monitor"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>` : ""}
+        ${project.id === "streaming-operations" ? `<div class="visual-pills"><span>READINESS</span><span>PARTNERS</span><span>DELIVERY</span></div><div class="visual-monitor"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>` : ""}
         ${project.id === "oneirodex" ? `<div class="mini-library"><span>✳</span><span>◉</span><span>✦</span><span>◈</span><span>⌁</span></div><div class="library-label mono">ONEIRODEX / HOME LIBRARY</div>` : ""}
         ${project.id === "oneirodex-web" ? `<div class="web-preview"><span class="web-preview-nav"></span><span class="web-preview-title"></span><span class="web-preview-title web-preview-title-short"></span><span class="web-preview-button"></span><span class="web-preview-shot"><i></i><i></i><i></i></span></div><div class="library-label mono">A PRODUCT STORY, MADE CLEAR</div>` : ""}
         ${project.id === "launches" ? `<div class="launch-visual-lines"><span>01 / INGEST</span><span>02 / PREPARE</span><span>03 / PLAY</span></div><div class="launch-spark" aria-hidden="true">✳</div>` : ""}

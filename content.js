@@ -1,16 +1,16 @@
-/* Keep career and project content here so new Roku case studies can be added without reworking the page layout. */
+/* Public portfolio content. Employer work stays high-level and excludes internal details. */
 window.PORTFOLIO_CONTENT = {
   projects: [
     {
-      id: "roku-ops",
+      id: "streaming-operations",
       category: "streaming",
       number: "01",
-      eyebrow: "STREAMING OPERATIONS · ROKU",
-      title: "A smoother path from partner to playback.",
-      description: "At Roku, I help keep the path from partner delivery to playback running smoothly across live, on-demand, SVOD, and AVOD. That means getting into the details of internal tools, CDN monitoring, integrations, and the on-call work behind The Roku Channel.",
-      tags: ["SVOD / AVOD / Live / EPG", "CDN", "The Roku Channel"],
-      href: "https://www.roku.com/",
-      linkLabel: "Roku",
+      eyebrow: "STREAMING OPERATIONS · CURRENT ROLE",
+      title: "The work behind a dependable stream.",
+      description: "I work across technical operations, partner coordination, and service readiness for a streaming platform. My focus is helping teams coordinate clearly and support a dependable viewer experience.",
+      tags: ["Operations", "Partner coordination", "Service readiness"],
+      href: "https://www.linkedin.com/in/chrisjrovira/",
+      linkLabel: "Professional profile",
       visual: "stream-visual",
       mark: "R",
       featured: true
@@ -36,7 +36,7 @@ window.PORTFOLIO_CONTENT = {
       eyebrow: "PRODUCT STORY · ONEIRODEX WEBSITE",
       title: "A clear window into the product.",
       description: "I built the companion site to make Oneirodex easier to understand before you open the app: real interface captures, short captioned walkthroughs, and a feature guide you can explore at your own pace.",
-      tags: ["Responsive web", "Real product UI", "Cloudflare analytics"],
+      tags: ["Responsive web", "Product storytelling", "Frontend"],
       href: "https://github.com/cephyrixzyth/Oneirodex-Website",
       linkLabel: "See website repo",
       visual: "website-visual",
@@ -61,13 +61,13 @@ window.PORTFOLIO_CONTENT = {
   stories: [
     {
       id: "roku-operations",
-      shortTitle: "The work behind playback",
-      eyebrow: "ROKU · CURRENT ROLE",
-      title: "The quiet work between partner delivery and playback.",
-      highlight: "LIVE · ON DEMAND · SVOD · AVOD",
+      shortTitle: "Operations that connect the dots",
+      eyebrow: "STREAMING · OPERATIONS",
+      title: "Clear handoffs help teams move with confidence.",
+      highlight: "READINESS · COORDINATION · RELIABILITY",
       paragraphs: [
-        "At Roku, my work sits across internal tools, partner workflows, CDN monitoring and integrations, and operational support for The Roku Channel.",
-        "That work is often a chain of handoffs. My focus is on helping teams see what comes next so the experience can feel simple on the viewer’s side."
+        "My current work brings technical operations, partner coordination, and service readiness together for a streaming platform.",
+        "I aim to make the next step clear for the people doing the work, while keeping the viewer experience in mind."
       ],
       visual: "story-art-operations",
       media: null
@@ -123,20 +123,17 @@ window.PORTFOLIO_CONTENT = {
       ],
       visual: "story-art-craft",
       media: null,
-      links: [
-        { label: "IMDb · nm2474609", url: "https://www.imdb.com/name/nm2474609/" },
-        { label: "IMDb · nm8298914", url: "https://www.imdb.com/name/nm8298914/" }
-      ]
+      links: []
     }
   ],
   experience: [
     {
       company: "Roku",
-      title: "Technical Operations Manager",
+      title: "Senior Technical Operations Manager",
       dates: "Nov 2020 — Present",
       place: "Streaming platform",
-      summary: "I work across the tools, partner workflows, and operational details behind The Roku Channel’s live and on-demand experiences.",
-      points: ["Technical guidance on internal tools and internal / external customer support", "CDN tooling, monitoring, integrations, and partner scaling", "Incident management and on-call services for The Roku Channel"],
+      summary: "Technical operations for a streaming platform, with a focus on service readiness, partner coordination, and dependable delivery.",
+      points: ["Coordinate operational readiness across teams and partners", "Support streaming services and delivery workflows", "Improve documentation, escalation, and day-to-day operating practices"],
       current: true
     },
     {
