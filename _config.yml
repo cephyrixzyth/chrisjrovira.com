@@ -1,5 +1,7 @@
 exclude:
   - README.md
+  - analytics-config.js
+  - analytics.js
   - roku-public-launches-review.md
   - linkedin-profile-refresh.md
   - worker/
@@ -7,3 +9,4 @@ exclude:
   - .wrangler/
   - downloads/
   - "*.docx"
+

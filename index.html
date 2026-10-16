@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="./styles.css" />
     <script src="./content.js" defer></script>
     <script src="./app.js" defer></script>
+    <script src="./assistant-config.js" defer></script>
+    <script src="./assistant.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -28,6 +30,7 @@
         <nav class="desktop-nav" aria-label="Main navigation">
           <a href="#work">Work</a>
           <a href="#story">Story</a>
+          <a href="#virtual-chris">Virtual Chris</a>
           <a href="#about">About</a>
         </nav>
         <div class="top-actions">
@@ -53,7 +56,8 @@
         <nav class="mobile-nav" id="mobile-menu" aria-label="Mobile navigation" hidden>
           <a href="#work">Work <span>01</span></a>
           <a href="#story">Story <span>02</span></a>
-          <a href="#about">About <span>03</span></a>
+          <a href="#virtual-chris">Virtual Chris <span>03</span></a>
+          <a href="#about">About <span>04</span></a>
           <a href="#contact">Let’s talk <span>↗</span></a>
         </nav>
       </header>
@@ -133,6 +137,42 @@
           </div>
         </section>
 
+        <section class="section-wrap section-block guide-section" id="virtual-chris" aria-labelledby="virtual-title">
+          <div class="section-heading">
+            <div><div class="eyebrow"><span class="eyebrow-line"></span> A LIVING KNOWLEDGE GUIDE</div><h2 id="virtual-title">Ask Virtual<br /><span class="muted-title">Chris.</span></h2></div>
+            <p class="section-aside">A friendly AI guide to my work and to the ideas behind retrieval-augmented generation and machine learning. It looks up relevant notes first, shows its sources, and says when I haven’t confirmed a detail yet.</p>
+          </div>
+          <div class="guide-layout">
+            <aside class="guide-intro">
+              <span class="guide-orbit" aria-hidden="true">✳</span>
+              <div class="panel-kicker mono">TWO WAYS IN</div>
+              <h3>Curious about the work or the technology?</h3>
+              <p>Ask about streaming operations, partner launches, or my path from editing to platform work. Or learn how RAG and ML fit together, with media workflows as a familiar reference point.</p>
+              <div class="guide-mode-switch" role="group" aria-label="Choose a question topic">
+                <button type="button" class="guide-mode is-active" data-guide-lane="about" aria-pressed="true">About Chris</button>
+                <button type="button" class="guide-mode" data-guide-lane="learn" aria-pressed="false">RAG &amp; ML</button>
+              </div>
+              <div class="guide-prompts" aria-label="Try a question">
+                <button type="button" data-guide-prompt="What launches and events have I supported?">My launch and event work <span aria-hidden="true">↗</span></button>
+                <button type="button" data-guide-mode="learn" data-guide-prompt="What is RAG, and how is it like a media delivery workflow?">Explain RAG with a media analogy <span aria-hidden="true">↗</span></button>
+                <button type="button" data-guide-prompt="What do you know about my current work at Roku?">What I’ve shared about Roku <span aria-hidden="true">↗</span></button>
+              </div>
+            </aside>
+            <div class="guide-chat" aria-label="Virtual Chris chat">
+              <div class="guide-chat-top"><div class="guide-avatar" aria-hidden="true">CJ<span>R.</span></div><div><strong>Virtual Chris <span class="ai-label">AI GUIDE</span></strong><small id="guide-status">Source matching preview · live answers connect after setup</small></div><span class="guide-online" aria-hidden="true"></span></div>
+              <div class="guide-messages" id="guide-messages" role="log" aria-live="polite" aria-relevant="additions text">
+                <article class="guide-message guide-assistant"><span class="message-label">VIRTUAL CHRIS</span><p>Hey, I can help you explore my background or unpack RAG and ML in plain language. Pick a topic, ask a question, and I’ll show the notes behind what I find.</p></article>
+              </div>
+              <form class="guide-form" id="guide-form">
+                <label class="sr-only" for="guide-input">Ask Virtual Chris a question</label>
+                <textarea id="guide-input" name="message" maxlength="700" rows="2" placeholder="Ask about my work, RAG, or ML…" required></textarea>
+                <div class="guide-form-foot"><span id="guide-hint">Questions are not saved by this site.</span><button class="button button-accent" type="submit">Ask <span aria-hidden="true">↑</span></button></div>
+              </form>
+              <p class="guide-disclosure">AI-generated answers · source notes are shown when available · questions are processed by Cloudflare and are not saved by this site.</p>
+            </div>
+          </div>
+        </section>
+
         <section class="section-wrap section-block about-section" id="about" aria-labelledby="about-title">
           <div class="section-heading">
             <div><div class="eyebrow"><span class="eyebrow-line"></span> EXPERIENCE & APPROACH</div><h2 id="about-title">The work behind<br /><span class="muted-title">the work.</span></h2></div>
@@ -171,3 +211,4 @@
     <noscript><p class="noscript-note">Turn on JavaScript to see the interactive project filters. All other sections remain available.</p></noscript>
   </body>
 </html>
+

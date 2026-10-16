@@ -86,6 +86,19 @@ window.PORTFOLIO_CONTENT = {
       media: null
     },
     {
+      id: "roku-launches",
+      shortTitle: "Streaming launches & live events",
+      eyebrow: "STREAMING · SUBSCRIPTIONS · LIVE EVENTS",
+      title: "Launch work across services, markets, and live programming.",
+      highlight: "LAUNCH READINESS · CONTENT OPERATIONS · EVENT SUPPORT",
+      paragraphs: [
+        "My supplied résumé lists launch readiness and operations support for Discovery+ Premium Subscriptions, Paramount+, Howdy Mexico, Peacock, Fox One, Apple TV Mexico, Max Mexico, and Tennis Channel.",
+        "It also lists content and event operations for WEIRD, Spiderwick, Formula E, and the FIFA World Cup. These are team launches and programs I supported; the names describe the work, not sole ownership. I keep Roku-specific operating details off this public page."
+      ],
+      visual: "story-art-operations",
+      media: null
+    },
+    {
       id: "regional-sports",
       shortTitle: "Regional sports rights",
       eyebrow: "METADATA · REGIONAL SPORTS NETWORKS",
@@ -123,7 +136,10 @@ window.PORTFOLIO_CONTENT = {
       ],
       visual: "story-art-craft",
       media: null,
-      links: []
+      links: [
+        { label: "IMDb · nm2474609", url: "https://www.imdb.com/name/nm2474609/" },
+        { label: "IMDb · nm8298914", url: "https://www.imdb.com/name/nm8298914/" }
+      ]
     }
   ],
   experience: [

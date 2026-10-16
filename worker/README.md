@@ -1,5 +1,12 @@
-# Retired guide Worker
+# Virtual Chris guide Worker
 
-This Worker returns HTTP 410 for all requests. The portfolio no longer includes the AI guide or its reference notes.
+The Worker retrieves reviewed notes from `assistant-knowledge.json` and generates short answers with Cloudflare Workers AI. It allows requests from the portfolio site, applies daily and per-visitor request limits, and returns source labels with answers. It does not store visitor questions; the Durable Object retains request counts using a truncated hash of the connecting IP.
 
-To apply this retirement to the existing Cloudflare Worker, run `npx wrangler deploy --config worker/wrangler.jsonc` from the repository root.
+Deploy from the repository root with:
+
+```sh
+npx wrangler deploy --config worker/wrangler.jsonc
+```
+
+Keep the knowledge file limited to approved, public-safe information. Do not add internal Roku procedures, partner configurations, incident information, unpublished metrics, résumé source files, credentials, or private planning material.
+
