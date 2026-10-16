@@ -48,9 +48,9 @@ window.PORTFOLIO_CONTENT = {
       category: "streaming",
       number: "04",
       eyebrow: "PLATFORM LAUNCHES · AT&T / VIACOM",
-      title: "A thousand channels, ready to go live.",
-      description: "Earlier in my career, I helped bring AT&T TV NOW and AT&T TV to market, including a 1,000+ live-channel launch and a beta rollout across 11 key markets. That work taught me how much a smooth launch depends on the handoffs people rarely see.",
-      tags: ["1,000+ live channels", "11-market beta", "Launch operations"],
+      title: "A live lineup, ready for launch.",
+      description: "Earlier in my career, I supported AT&T TV NOW and AT&T TV launches, coordinating content, partner details, and team handoffs through complex service rollouts.",
+      tags: ["Launch operations", "Partner coordination", "Content delivery"],
       href: "https://www.linkedin.com/in/chrisjrovira/",
       linkLabel: "See profile",
       visual: "launch-visual",
@@ -74,13 +74,13 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       id: "att-live-launch",
-      shortTitle: "1,000+ live channels",
+      shortTitle: "AT&T TV launch support",
       eyebrow: "LAUNCH SUPPORT · AT&T TV NOW / AT&T TV",
       title: "Getting a live lineup ready for a new home.",
-      highlight: "1,000+ LIVE CHANNELS · 11-MARKET BETA",
+      highlight: "CONTENT · PARTNERS · LAUNCH READINESS",
       paragraphs: [
-        "I supported the AT&T TV NOW and AT&T TV launches, including a launch with more than 1,000 live channels and a beta rollout across 11 key markets.",
-        "The headline was the scale. The day-to-day work was getting content, partner details, metadata, and teams aligned so a complicated lineup could arrive as one service."
+        "I supported the AT&T TV NOW and AT&T TV launches, helping coordinate content, partner details, and team handoffs.",
+        "The day-to-day work involved aligning content, partner details, metadata, and teams through a complex service rollout."
       ],
       visual: "story-art-launch",
       media: null
@@ -178,7 +178,7 @@ window.PORTFOLIO_CONTENT = {
       dates: "Feb 2006 — Mar 2010",
       place: "Miami, Florida",
       summary: "Managed a creative production studio and its day-to-day client, asset, and post-production workflows.",
-      points: ["Managed incoming clients across video and audio suites", "Edited EPKs, promos, and the web series Tom Hollands – Driven", "Created DVD, Blu-ray, and streaming deliverables; managed archives"],
+      points: ["Managed incoming clients across video and audio suites", "Edited EPKs, promos, and short-form video projects", "Created DVD, Blu-ray, and streaming deliverables; managed archives"],
       current: false
     }
   ],
