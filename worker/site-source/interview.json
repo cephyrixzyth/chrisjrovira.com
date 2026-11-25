@@ -1,0 +1,60 @@
+{
+  "topics": {
+    "launch": {
+      "title": "Launch coordination",
+      "context": "Chris describes supporting AT&T TV NOW and AT&T TV launches, coordinating content, partner details and handoffs.",
+      "questions": [
+        "Which part of a launch makes handoffs hardest to explain to someone joining the team?",
+        "Using a public example, how would you decide which information the next team needs before handoff?",
+        "What would you ask a new partner before planning the next handoff?"
+      ],
+      "source": {
+        "label": "Public launch-support note",
+        "url": "https://github.com/cephyrixzyth/chrisjrovira.com/blob/be7320436675a3aa2af380f6cf8b80ace348aced/content.js#L76-L86"
+      }
+    },
+    "product": {
+      "title": "Product storytelling",
+      "context": "Chris built a companion site that introduces Oneirodex through real interface captures and walkthroughs.",
+      "questions": [
+        "What does a household member need to understand before opening the demo?",
+        "Pick a screenshot. What does it communicate well, and what would a short walkthrough explain better?",
+        "What would you change first after watching a new visitor try the site?"
+      ],
+      "source": {
+        "label": "Oneirodex website source",
+        "url": "https://github.com/cephyrixzyth/Oneirodex-Website/tree/d72a021a5a47f561b28a9f9640579da7d661a672"
+      }
+    },
+    "craft": {
+      "title": "From editing to delivery",
+      "context": "Chris describes a background in editing, audio engineering and post-production that informs his approach to media delivery.",
+      "questions": [
+        "What did working directly with picture and sound teach you to look for?",
+        "How would you explain a viewer-facing quality trade-off to people with different technical backgrounds?",
+        "What would you want an early-career teammate to notice in a finished piece?"
+      ],
+      "source": {
+        "label": "Public creative-career note",
+        "url": "https://github.com/cephyrixzyth/chrisjrovira.com/blob/be7320436675a3aa2af380f6cf8b80ace348aced/content.js#L128-L142"
+      }
+    }
+  },
+  "minutes": {
+    "15": [
+      3,
+      8,
+      4
+    ],
+    "30": [
+      5,
+      17,
+      8
+    ]
+  },
+  "steps": [
+    "Set the scene",
+    "Discuss one decision",
+    "Take it further"
+  ]
+}

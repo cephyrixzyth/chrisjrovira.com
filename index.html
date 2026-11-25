@@ -14,10 +14,12 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
-    <script src="./content.js" defer></script>
+    <link rel="canonical" href="https://chrisjrovira.com/" />
+    <meta property="og:image" content="https://chrisjrovira.com/interview/art/film-and-prism-960.webp" />
     <script src="./app.js" defer></script>
-    <script src="./assistant-config.js" defer></script>
-    <script src="./assistant.js" defer></script>
+    <script src="./assistant-config.js?edition=skills1" defer></script>
+    <script src="./assistant.js?edition=skills1" defer></script>
+  <noscript><style>.theme-picker,.menu-toggle,.copy-email{display:none!important}.mobile-nav[hidden]{position:static;display:flex!important;gap:12px;flex-wrap:wrap}.topbar{position:static;flex-wrap:wrap}@media(min-width:681px){.mobile-nav[hidden]{display:none!important}}</style></noscript>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -30,8 +32,8 @@
         <nav class="desktop-nav" aria-label="Main navigation">
           <a href="#work">Work</a>
           <a href="#story">Story</a>
-          <a href="#virtual-chris">Virtual Chris</a>
-          <a href="#about">About</a>
+          <a href="resume/index.html">Résumé</a>
+          <a href="#about">Experience</a>
         </nav>
         <div class="top-actions">
           <details class="theme-picker">
@@ -54,11 +56,12 @@
           </button>
         </div>
         <nav class="mobile-nav" id="mobile-menu" aria-label="Mobile navigation" hidden>
-          <a href="#work">Work <span>01</span></a>
-          <a href="#story">Story <span>02</span></a>
-          <a href="#virtual-chris">Virtual Chris <span>03</span></a>
-          <a href="#about">About <span>04</span></a>
-          <a href="#contact">Let’s talk <span>↗</span></a>
+          <a href="#work">Work</a>
+          <a href="#story">Story</a>
+          <a href="resume/index.html">Résumé</a>
+          <a href="#about">Experience</a>
+          <a href="#contact">Contact</a>
+          <a href="#virtual-chris">Practice guide</a>
         </nav>
       </header>
 
@@ -66,11 +69,12 @@
         <section class="hero section-wrap" aria-labelledby="hero-title">
           <div class="hero-copy">
             <div class="eyebrow"><span class="eyebrow-line"></span> TECHNICAL OPERATIONS · STREAMING · MEDIA</div>
-            <h1 id="hero-title">Making the<br /><span class="gradient-text">complex work</span><br />together.</h1>
-            <p class="hero-intro">I help streaming and media teams deliver dependable viewer experiences by bringing technical operations, partner coordination, and launch readiness together. My 20+ years across post-production, content delivery, and streaming connect creative craft with the systems and teamwork behind the service.</p>
+            <h1 id="hero-title">Streaming operations<br /><span class="gradient-text">&amp; media delivery.</span></h1>
+            <p class="hero-intro">I coordinate partner launches and media delivery at Roku, drawing on 20+ years in editing, post-production and streaming.</p>
             <div class="hero-ctas">
-              <a class="button button-accent" href="#work">Explore my work <span aria-hidden="true">↓</span></a>
-              <a class="text-link" href="https://www.linkedin.com/in/chrisjrovira/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+              <a class="button button-accent" href="resume/index.html">Résumé</a>
+              <a class="text-link" href="work/oneirodex/index.html">Oneirodex case study</a>
+              <a class="text-link" href="#work">Selected work</a>
             </div>
             <div class="hero-footnote"><span class="status-dot"></span> Senior Technical Operations Manager · Austin, Texas</div>
           </div>
@@ -105,13 +109,53 @@
             <div><div class="eyebrow"><span class="eyebrow-line"></span> SELECTED WORK</div><h2 id="work-title">Built for the<br /><span class="muted-title">whole journey.</span></h2></div>
             <p class="section-aside">A selection of work across streaming operations, partner launches, and personal product building. Company names identify professional experience; this is an independent portfolio.</p>
           </div>
-          <div class="filter-row" role="group" aria-label="Filter projects">
+          <p class="portfolio-paths"><a href="interview/index.html">Build a conversation brief</a> · <a href="notes/index.html">Work journal</a> · <a href="craft/index.html">Compare two edits</a></p>
+          <div class="filter-row" hidden role="group" aria-label="Filter projects">
             <span class="filter-label mono">SHOW ME</span>
             <button class="filter-chip is-active" type="button" data-filter="all" aria-pressed="true">Everything <span>04</span></button>
             <button class="filter-chip" type="button" data-filter="streaming" aria-pressed="false">Streaming <span>02</span></button>
             <button class="filter-chip" type="button" data-filter="building" aria-pressed="false">Building <span>02</span></button>
           </div>
-          <div class="project-grid" id="project-grid"></div>
+          <div class="project-grid" id="project-grid"><article class="project-card project-featured" data-category="streaming">
+    <div class="project-visual stream-visual" aria-hidden="true">
+      <div class="visual-grid"></div><div class="visual-mark">R</div>
+      <span class="visual-number mono">01 / 04</span><div class="visual-pills"><span>READINESS</span><span>PARTNERS</span><span>DELIVERY</span></div><div class="visual-monitor"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div><div class="project-body">
+      <div class="project-eyebrow mono"><span></span>STREAMING OPERATIONS · CURRENT ROLE</div>
+      <h3>The work behind a dependable stream.</h3><p>I work across technical operations, partner coordination, and service readiness for a streaming platform. My focus is helping teams coordinate clearly and support a dependable viewer experience.</p>
+      <div class="tag-row"><span>Operations</span><span>Partner coordination</span><span>Service readiness</span></div>
+      <a class="project-link" href="https://www.linkedin.com/in/chrisjrovira/">Professional profile <span aria-hidden="true">↗</span></a>
+    </div></article>
+<article class="project-card project-featured" data-category="building">
+    <div class="project-visual library-visual" aria-hidden="true">
+      <div class="visual-grid"></div><div class="visual-mark">OD</div>
+      <span class="visual-number mono">02 / 04</span><div class="mini-library"><span>✳</span><span>◉</span><span>✦</span><span>◈</span><span>⌁</span></div><div class="library-label mono">ONEIRODEX / HOME LIBRARY</div>
+    </div><div class="project-body">
+      <div class="project-eyebrow mono"><span></span>PERSONAL PROJECT · FULL-STACK</div>
+      <h3>A home library with room to play.</h3><p>Oneirodex is a self-hosted game library for a household, pairing a Flask service with a React interface for discovery, sharing, and play.</p>
+      <div class="tag-row"><span>Flask + React</span><span>Self-hosted</span><span>Product thinking</span></div>
+      <a class="project-link" href="https://github.com/cephyrixzyth/Oneirodex">Explore Oneirodex <span aria-hidden="true">↗</span></a>
+    </div></article>
+<article class="project-card " data-category="building">
+    <div class="project-visual website-visual" aria-hidden="true">
+      <div class="visual-grid"></div><div class="visual-mark">WEB</div>
+      <span class="visual-number mono">03 / 04</span><div class="web-preview"><span class="web-preview-nav"></span><span class="web-preview-title"></span><span class="web-preview-title web-preview-title-short"></span><span class="web-preview-button"></span><span class="web-preview-shot"><i></i><i></i><i></i></span></div><div class="library-label mono">ONEIRODEX WEBSITE</div>
+    </div><div class="project-body">
+      <div class="project-eyebrow mono"><span></span>PRODUCT STORY · ONEIRODEX WEBSITE</div>
+      <h3>A clear window into the product.</h3><p>I built the companion site to make Oneirodex easier to understand before you open the app: real interface captures, short captioned walkthroughs, and a feature guide you can explore at your own pace.</p>
+      <div class="tag-row"><span>Responsive web</span><span>Product storytelling</span><span>Frontend</span></div>
+      <a class="project-link" href="work/oneirodex/index.html">Read the case study <span aria-hidden="true">↗</span></a>
+    </div></article>
+<article class="project-card " data-category="streaming">
+    <div class="project-visual launch-visual" aria-hidden="true">
+      <div class="visual-grid"></div><div class="visual-mark">LIVE</div>
+      <span class="visual-number mono">04 / 04</span><div class="launch-visual-lines"><span>01 / INGEST</span><span>02 / PREPARE</span><span>03 / PLAY</span></div><div class="launch-spark">✳</div>
+    </div><div class="project-body">
+      <div class="project-eyebrow mono"><span></span>PLATFORM LAUNCHES · AT&amp;T / VIACOM</div>
+      <h3>A live lineup, ready for launch.</h3><p>Earlier in my career, I supported AT&amp;T TV NOW and AT&amp;T TV launches, coordinating content, partner details, and team handoffs through complex service rollouts.</p>
+      <div class="tag-row"><span>Launch operations</span><span>Partner coordination</span><span>Content delivery</span></div>
+      <a class="project-link" href="https://www.linkedin.com/in/chrisjrovira/">See profile <span aria-hidden="true">↗</span></a>
+    </div></article></div>
         </section>
 
         <section class="section-block story-band" id="story" aria-labelledby="story-title">
@@ -121,57 +165,65 @@
             <p class="section-aside">A few chapters from a career spanning post-production, partner delivery, and streaming operations.</p>
           </div>
           <div class="story-viewer">
-            <div class="story-media" id="story-media" role="region" aria-label="Featured story video or artwork"></div>
             <div class="story-rail-shell">
               <div class="story-rail-heading">
-              <div><p class="story-count mono" id="story-count" aria-live="polite">STORY 1 OF 4</p><p class="story-rail-hint">Select a title to jump to that story</p></div>
-                <div class="story-rail-controls">
+                <p class="story-count mono" id="story-count" aria-live="polite">Career chapters</p>
+                <div class="story-rail-controls" hidden>
                   <button class="icon-button story-step-button" id="story-previous" type="button" aria-label="Previous story">←</button>
                   <button class="icon-button story-step-button" id="story-next" type="button" aria-label="Next story">→</button>
                 </div>
               </div>
-              <div class="story-index" id="story-index" role="group" aria-label="Story chapters"></div>
+              <nav class="story-index" id="story-index" aria-label="Story chapters"><a class="story-index-item" data-story-index="0" id="entry-roku-operations" href="#chapter-roku-operations"><span class="story-index-number mono">01</span>
+    <span class="story-index-copy"><strong>Operations that connect the dots</strong><span>STREAMING · OPERATIONS</span></span><span class="story-index-arrow" aria-hidden="true">↗</span></a>
+<a class="story-index-item" data-story-index="1" id="entry-att-live-launch" href="#chapter-att-live-launch"><span class="story-index-number mono">02</span>
+    <span class="story-index-copy"><strong>AT&amp;T TV launch support</strong><span>LAUNCH SUPPORT · AT&amp;T TV NOW / AT&amp;T TV</span></span><span class="story-index-arrow" aria-hidden="true">↗</span></a>
+<a class="story-index-item" data-story-index="2" id="entry-roku-launches" href="#chapter-roku-launches"><span class="story-index-number mono">03</span>
+    <span class="story-index-copy"><strong>Streaming launches &amp; live events</strong><span>STREAMING · SUBSCRIPTIONS · LIVE EVENTS</span></span><span class="story-index-arrow" aria-hidden="true">↗</span></a>
+<a class="story-index-item" data-story-index="3" id="entry-regional-sports" href="#chapter-regional-sports"><span class="story-index-number mono">04</span>
+    <span class="story-index-copy"><strong>Regional sports rights</strong><span>METADATA · REGIONAL SPORTS NETWORKS</span></span><span class="story-index-arrow" aria-hidden="true">↗</span></a>
+<a class="story-index-item" data-story-index="4" id="entry-international-delivery" href="#chapter-international-delivery"><span class="story-index-number mono">05</span>
+    <span class="story-index-copy"><strong>One catalog, many destinations</strong><span>PARTNER DELIVERY · VIACOM INTERNATIONAL</span></span><span class="story-index-arrow" aria-hidden="true">↗</span></a>
+<a class="story-index-item" data-story-index="5" id="entry-creative-roots" href="#chapter-creative-roots"><span class="story-index-number mono">06</span>
+    <span class="story-index-copy"><strong>From the edit bay onward</strong><span>EARLIER CREDITS · EDITING &amp; POST</span></span><span class="story-index-arrow" aria-hidden="true">↗</span></a></nav>
             </div>
-            <article class="story-detail" id="story-detail" aria-live="polite" aria-atomic="true"></article>
+            <div id="story-detail"><article class="story-detail" id="chapter-roku-operations" tabindex="-1">
+    <div class="story-detail-top"><p class="eyebrow">STREAMING · OPERATIONS</p><p class="story-highlight">READINESS · COORDINATION · RELIABILITY</p></div>
+    <h3>Clear handoffs help teams move with confidence.</h3><div class="story-detail-copy"><p>My current work brings technical operations, partner coordination, and service readiness together for a streaming platform.</p><p>I aim to make the next step clear for the people doing the work, while keeping the viewer experience in mind.</p></div>
+
+    <a class="chapter-return" href="#entry-roku-operations">Back to chapter list</a></article>
+<article class="story-detail" id="chapter-att-live-launch" tabindex="-1">
+    <div class="story-detail-top"><p class="eyebrow">LAUNCH SUPPORT · AT&amp;T TV NOW / AT&amp;T TV</p><p class="story-highlight">CONTENT · PARTNERS · LAUNCH READINESS</p></div>
+    <h3>Getting a live lineup ready for a new home.</h3><div class="story-detail-copy"><p>I supported the AT&amp;T TV NOW and AT&amp;T TV launches, helping coordinate content, partner details, and team handoffs.</p><p>The day-to-day work involved aligning content, partner details, metadata, and teams through a complex service rollout.</p></div>
+
+    <a class="chapter-return" href="#entry-att-live-launch">Back to chapter list</a></article>
+<article class="story-detail" id="chapter-roku-launches" tabindex="-1">
+    <div class="story-detail-top"><p class="eyebrow">STREAMING · SUBSCRIPTIONS · LIVE EVENTS</p><p class="story-highlight">LAUNCH READINESS · CONTENT OPERATIONS · EVENT SUPPORT</p></div>
+    <h3>Launch work across services, markets, and live programming.</h3><div class="story-detail-copy"><p>My supplied résumé lists launch readiness and operations support for Discovery+ Premium Subscriptions, Paramount+, Howdy Mexico, Peacock, Fox One, Apple TV Mexico, Max Mexico, and Tennis Channel.</p><p>It also lists content and event operations for WEIRD, Spiderwick, Formula E, and the FIFA World Cup. These are team launches and programs I supported; the names describe the work, not sole ownership. I keep Roku-specific operating details off this public page.</p></div>
+
+    <a class="chapter-return" href="#entry-roku-launches">Back to chapter list</a></article>
+<article class="story-detail" id="chapter-regional-sports" tabindex="-1">
+    <div class="story-detail-top"><p class="eyebrow">METADATA · REGIONAL SPORTS NETWORKS</p><p class="story-highlight">SCTE 224 · RIGHTS-AWARE WORKFLOWS</p></div>
+    <h3>Making availability travel with the schedule.</h3><div class="story-detail-copy"><p>I integrated SCTE 224 workflows for regional sports networks, bringing rights and availability information into the delivery process.</p><p>When a game is only available in certain places or windows, that context matters as much as the video file. Getting those details into the right workflow helps partners and platforms make the experience clearer.</p></div>
+
+    <a class="chapter-return" href="#entry-regional-sports">Back to chapter list</a></article>
+<article class="story-detail" id="chapter-international-delivery" tabindex="-1">
+    <div class="story-detail-top"><p class="eyebrow">PARTNER DELIVERY · VIACOM INTERNATIONAL</p><p class="story-highlight">VOD · DTO · SVOD · INTERNATIONAL</p></div>
+    <h3>Taking digital video from the edit to more screens.</h3><div class="story-detail-copy"><p>At Viacom International, I led digital video delivery and post-production work for transactional and subscription partners, while onboarding partners and supporting international distribution.</p><p>Services in that mix included Netflix, iTunes, and Amazon. Moving from the edit suite into partner delivery taught me to keep the creative intent and the technical requirements in view at the same time.</p></div>
+
+    <a class="chapter-return" href="#entry-international-delivery">Back to chapter list</a></article>
+<article class="story-detail" id="chapter-creative-roots" tabindex="-1">
+    <div class="story-detail-top"><p class="eyebrow">EARLIER CREDITS · EDITING &amp; POST</p><p class="story-highlight">VIDEO EDITING · AUDIO · POST-PRODUCTION</p></div>
+    <h3>Before the platform, there was the picture and the sound.</h3><div class="story-detail-copy"><p>I started close to the craft—editing, audio engineering, and post-production across studio, freelance, and film work. That gave me an eye for what quality looks like and an ear for the small things a viewer notices.</p><p>That creative foundation still shapes how I approach operations: delivery is part of the story, and the systems behind it should protect the work rather than get in its way.</p></div>
+    <div class="story-detail-links"><a href="https://www.imdb.com/name/nm2474609/">IMDb · nm2474609</a> <a href="https://www.imdb.com/name/nm8298914/">IMDb · nm8298914</a></div>
+    <a class="chapter-return" href="#entry-creative-roots">Back to chapter list</a></article></div>
           </div>
           </div>
         </section>
 
         <section class="section-wrap section-block guide-section" id="virtual-chris" aria-labelledby="virtual-title">
-          <div class="section-heading">
-            <div><div class="eyebrow"><span class="eyebrow-line"></span> A LIVING KNOWLEDGE GUIDE</div><h2 id="virtual-title">Ask Virtual<br /><span class="muted-title">Chris.</span></h2></div>
-            <p class="section-aside">A friendly AI guide to my work and to the ideas behind retrieval-augmented generation and machine learning. It looks up relevant notes first, shows its sources, and says when I haven’t confirmed a detail yet.</p>
-          </div>
-          <div class="guide-layout">
-            <aside class="guide-intro">
-              <span class="guide-orbit" aria-hidden="true">✳</span>
-              <div class="panel-kicker mono">TWO WAYS IN</div>
-              <h3>Curious about the work or the technology?</h3>
-              <p>Ask about streaming operations, partner launches, or my path from editing to platform work. Or learn how RAG and ML fit together, with media workflows as a familiar reference point.</p>
-              <div class="guide-mode-switch" role="group" aria-label="Choose a question topic">
-                <button type="button" class="guide-mode is-active" data-guide-lane="about" aria-pressed="true">About Chris</button>
-                <button type="button" class="guide-mode" data-guide-lane="learn" aria-pressed="false">RAG &amp; ML</button>
-              </div>
-              <div class="guide-prompts" aria-label="Try a question">
-                <button type="button" data-guide-prompt="What launches and events have I supported?">My launch and event work <span aria-hidden="true">↗</span></button>
-                <button type="button" data-guide-mode="learn" data-guide-prompt="What is RAG, and how is it like a media delivery workflow?">Explain RAG with a media analogy <span aria-hidden="true">↗</span></button>
-                <button type="button" data-guide-prompt="What do you know about my current work at Roku?">What I’ve shared about Roku <span aria-hidden="true">↗</span></button>
-              </div>
-            </aside>
-            <div class="guide-chat" aria-label="Virtual Chris chat">
-              <div class="guide-chat-top"><div class="guide-avatar" aria-hidden="true">CJ<span>R.</span></div><div><strong>Virtual Chris <span class="ai-label">AI GUIDE</span></strong><small id="guide-status">Source matching preview · live answers connect after setup</small></div><span class="guide-online" aria-hidden="true"></span></div>
-              <div class="guide-messages" id="guide-messages" role="log" aria-live="polite" aria-relevant="additions text">
-                <article class="guide-message guide-assistant"><span class="message-label">VIRTUAL CHRIS</span><p>Hey, I can help you explore my background or unpack RAG and ML in plain language. Pick a topic, ask a question, and I’ll show the notes behind what I find.</p></article>
-              </div>
-              <form class="guide-form" id="guide-form">
-                <label class="sr-only" for="guide-input">Ask Virtual Chris a question</label>
-                <textarea id="guide-input" name="message" maxlength="700" rows="2" placeholder="Ask about my work, RAG, or ML…" required></textarea>
-                <div class="guide-form-foot"><span id="guide-hint">Questions are not saved by this site.</span><button class="button button-accent" type="submit">Ask <span aria-hidden="true">↑</span></button></div>
-              </form>
-              <p class="guide-disclosure">AI-generated answers · source notes are shown when available · questions are processed by Cloudflare and are not saved by this site.</p>
-            </div>
-          </div>
-        </section>
+  <div class="section-heading"><h2 id="virtual-title">Virtual Chris · Practice guide</h2><p>A guide to practical decisions in media, operations and machine learning. <a href="./practice-guide.html">Open the full-page edition</a> or <a href="practice/index.html">rehearse a fictional handoff</a>.</p></div>
+  <iframe id="practice-reader" src="./practice-guide.html" title="Practice guide lessons and exercises" width="100%" height="760" style="width:100%;height:min(760px,82vh);border:0" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer"></iframe>
+</section>
 
         <section class="section-wrap section-block about-section" id="about" aria-labelledby="about-title">
           <div class="section-heading">
@@ -179,13 +231,42 @@
             <p class="section-aside">The job titles tell part of the story. The rest is years spent helping people, partners, and technology meet in the middle. Roles and dates here are drawn from my archived résumé and public profile.</p>
           </div>
           <div class="experience-layout">
-            <div class="timeline" id="experience-list"></div>
+            <div class="timeline" id="experience-list"><article class="timeline-item is-current">
+    <div class="timeline-rail" aria-hidden="true"><span class="timeline-dot"></span><span class="timeline-stem"></span></div>
+    <div class="timeline-content"><div class="timeline-top"><span class="timeline-date mono">Nov 2020 — Present</span></div>
+    <h3>Roku</h3><div class="timeline-role">Senior Technical Operations Manager</div><p>Technical operations for a streaming platform, with a focus on service readiness, partner coordination, and dependable delivery.</p>
+    <details class="timeline-details"><summary>What that looked like <span aria-hidden="true">+</span></summary><ul><li>Coordinate operational readiness across teams and partners</li><li>Support streaming services and delivery workflows</li><li>Improve documentation, escalation, and day-to-day operating practices</li></ul></details></div></article>
+<article class="timeline-item ">
+    <div class="timeline-rail" aria-hidden="true"><span class="timeline-dot"></span><span class="timeline-stem"></span></div>
+    <div class="timeline-content"><div class="timeline-top"><span class="timeline-date mono">Nov 2016 — Feb 2020</span></div>
+    <h3>AT&amp;T Entertainment Group</h3><div class="timeline-role">Integration Manager · Content &amp; Programming Manager</div><p>Managed live and on-demand services across platforms, providers, and backend systems.</p>
+    <details class="timeline-details"><summary>What that looked like <span aria-hidden="true">+</span></summary><ul><li>Supported DIRECTV NOW and AT&amp;T TV launches</li><li>Onboarded live channels and partners</li><li>Integrated SCTE 224 workflows for regional sports networks</li></ul></details></div></article>
+<article class="timeline-item ">
+    <div class="timeline-rail" aria-hidden="true"><span class="timeline-dot"></span><span class="timeline-stem"></span></div>
+    <div class="timeline-content"><div class="timeline-top"><span class="timeline-date mono">Mar 2011 — Sep 2016</span></div>
+    <h3>Viacom International</h3><div class="timeline-role">Partner Manager &amp; Supervising Editor · VOD / DTO / SVOD</div><p>Led digital video delivery and post-production work for transactional and subscription video partners.</p>
+    <details class="timeline-details"><summary>What that looked like <span aria-hidden="true">+</span></summary><ul><li>Managed a team of editors and delivery workflows</li><li>Onboarded partners and supported international distribution</li><li>Worked across launches for services including Netflix, iTunes, and Amazon</li></ul></details></div></article>
+<article class="timeline-item ">
+    <div class="timeline-rail" aria-hidden="true"><span class="timeline-dot"></span><span class="timeline-stem"></span></div>
+    <div class="timeline-content"><div class="timeline-top"><span class="timeline-date mono">Mar 2010 — Jan 2011</span></div>
+    <h3>Bigfoot Entertainment</h3><div class="timeline-role">Assistant Post Supervisor · On-line Editor</div><p>Worked across post-production, online editing, and audio for Bigfoot Studios.</p>
+    <details class="timeline-details"><summary>What that looked like <span aria-hidden="true">+</span></summary><ul><li>Contributed to post-production on Deep Gold</li><li>Managed editing stations and supported their editors</li><li>Helped prepare film and sound deliverables</li></ul></details></div></article>
+<article class="timeline-item ">
+    <div class="timeline-rail" aria-hidden="true"><span class="timeline-dot"></span><span class="timeline-stem"></span></div>
+    <div class="timeline-content"><div class="timeline-top"><span class="timeline-date mono">Apr 2009 — Nov 2009</span></div>
+    <h3>Eastern Video</h3><div class="timeline-role">Video Editor · Audio Engineer (Freelance)</div><p>Edited local commercials and prepared media for broadcast, disc, and digital delivery.</p>
+    <details class="timeline-details"><summary>What that looked like <span aria-hidden="true">+</span></summary><ul><li>Edited video and created supporting graphics</li><li>Encoded video for broadcast and tape</li><li>Prepared DVD and Blu-ray deliverables</li></ul></details></div></article>
+<article class="timeline-item ">
+    <div class="timeline-rail" aria-hidden="true"><span class="timeline-dot"></span></div>
+    <div class="timeline-content"><div class="timeline-top"><span class="timeline-date mono">Feb 2006 — Mar 2010</span></div>
+    <h3>Arch-Creek Pictures</h3><div class="timeline-role">Studio Manager · Video Editor · Audio Engineer</div><p>Managed a creative production studio and its day-to-day client, asset, and post-production workflows.</p>
+    <details class="timeline-details"><summary>What that looked like <span aria-hidden="true">+</span></summary><ul><li>Managed incoming clients across video and audio suites</li><li>Edited EPKs, promos, and short-form video projects</li><li>Created DVD, Blu-ray, and streaming deliverables; managed archives</li></ul></details></div></article></div>
             <aside class="expertise-panel">
               <div class="panel-kicker mono">HOW I HELP</div>
               <h3>Good work happens between the teams.</h3>
               <p>I bring technical detail and human context into the same conversation, so the next step is clear for everyone involved.</p>
-              <div class="skill-cloud" id="skill-cloud"></div>
-              <div class="credentials"><div class="panel-kicker mono">EDUCATION & TRAINING</div><ul id="credentials-list"></ul></div>
+              <div class="skill-cloud" id="skill-cloud"><span>Streaming operations</span><span>Content delivery</span><span>Partner integrations</span><span>Incident management</span><span>Media workflows</span><span>Metadata &amp; XML</span><span>Agile / Scrum</span><span>Linux</span><span>SQL</span><span>Video &amp; audio post</span></div>
+              <div class="credentials"><div class="panel-kicker mono">EDUCATION & TRAINING</div><ul id="credentials-list"><li>SAFe 4.0 Certification · Scaled Agile</li><li>LPI Linux Essentials · Linux Academy</li><li>AWS Concepts · Linux Academy</li><li>DevOps Essentials · Linux Academy</li><li>SQL Primer · Linux Academy</li><li>Python 3 Scripting for System Administrators · Linux Academy</li><li>Bash Scripting · Linux Academy</li><li>Containers &amp; Orchestration · Linux Academy</li><li>Network Routing Fundamentals · Linux Academy</li><li>Elastic Stack Essentials · Linux Academy</li><li>Intro to Programming Nanodegree · Udacity</li><li>Pro Tools Certification · SAE Institute</li><li>Audio Engineering Diploma · SAE Institute</li><li>Associate of Arts, Computer Science · Miami Dade College</li></ul></div>
               <div class="languages"><span class="mono">LANGUAGES</span><strong>English</strong><span class="language-divider">/</span><strong>Español</strong></div>
             </aside>
           </div>
@@ -206,7 +287,7 @@
         </section>
       </main>
 
-      <footer class="footer section-wrap"><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">CJ<span>R.</span></span><span class="brand-name">CHRISTOPHER ROVIRA</span></a><span class="footer-note">BUILT WITH CARE, FROM THE FIRST FRAME TO THE LAST.</span><span class="footer-year">© <span id="year"></span> CHRIS ROVIRA</span></footer>
+      <footer class="footer section-wrap"><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">CJ<span>R.</span></span><span class="brand-name">CHRISTOPHER ROVIRA</span></a><span class="footer-note">BUILT WITH CARE, FROM THE FIRST FRAME TO THE LAST.</span><span class="footer-year">© <span id="year">2026</span> CHRIS ROVIRA</span></footer>
     </div>
     <noscript><p class="noscript-note">Turn on JavaScript to see the interactive project filters. All other sections remain available.</p></noscript>
   </body>

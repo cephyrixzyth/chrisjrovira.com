@@ -1,4 +1,2 @@
-/* Set after deploying the Cloudflare Worker. Leave blank for local retrieval preview. */
-window.VIRTUAL_CHRIS_CONFIG = {
-  endpoint: "https://virtual-chris-guide.chrisjrovira-com.workers.dev"
-};
+// Set to the HTTPS /api/coach URL only after checking the new Worker.
+window.PRACTICE_COACH_ENDPOINT = "";

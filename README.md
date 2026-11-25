@@ -8,6 +8,10 @@ Edit `content.js` to update projects, career history, skills, and training. Empl
 
 The page is an independent portfolio and is not endorsed by employers. Do not publish internal systems, operating procedures, partner details, incident information, unpublished metrics, résumé source files, credentials, or private planning material.
 
+Rebuild the homepage, résumé and interview brief with `node worker/site-source/build.mjs`. Run the same command with `--check` to detect stale generated HTML. The build uses `content.js` for roles, project cards and chapters, and `worker/site-source/interview.json` for the interview topics and time allocations. The generated pages work on a static host.
+
+The guide presents 24 locally available lessons. Changes to its library and optional Worker follow the procedure in [the Worker guide](worker/README.md).
+
 ## Design
 
 Dark mode is the initial theme. Visitors can choose Light, Forest, Ocean, Sunset, or Lavender; their selection is stored in the browser. The page honors reduced-motion preferences.

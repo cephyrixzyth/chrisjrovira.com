@@ -1,138 +1,483 @@
 {
   "version": 1,
-  "items": [
+  "references": {
+    "hls": [
+      "HTTP Live Streaming · RFC 8216",
+      "https://www.rfc-editor.org/rfc/rfc8216"
+    ],
+    "tt": [
+      "WebVTT · W3C",
+      "https://www.w3.org/TR/webvtt1/"
+    ],
+    "av": [
+      "Accessible Audio and Video Media · W3C",
+      "https://www.w3.org/WAI/media/av/"
+    ],
+    "sre": [
+      "Incident Response · SRE Workbook",
+      "https://sre.google/workbook/incident-response/"
+    ],
+    "mon": [
+      "Monitoring Distributed Systems · SRE Book",
+      "https://sre.google/sre-book/monitoring-distributed-systems/"
+    ],
+    "canary": [
+      "Canarying Releases · SRE Workbook",
+      "https://sre.google/workbook/canarying-releases/"
+    ],
+    "prov": [
+      "Data on the Web Best Practices · W3C",
+      "https://www.w3.org/TR/dwbp/"
+    ],
+    "dc": [
+      "DCMI Metadata Terms",
+      "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/"
+    ],
+    "wcag": [
+      "Web Content Accessibility Guidelines 2.2 · W3C",
+      "https://www.w3.org/TR/WCAG22/"
+    ],
+    "print": [
+      "Printing · MDN",
+      "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Printing"
+    ],
+    "rag": [
+      "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "https://arxiv.org/abs/2005.11401"
+    ],
+    "ir": [
+      "Hybrid search · Elastic",
+      "https://www.elastic.co/docs/solutions/search/hybrid-search"
+    ],
+    "ff": [
+      "ffprobe Documentation · FFmpeg",
+      "https://ffmpeg.org/ffprobe.html"
+    ],
+    "loud": [
+      "Loudness normalisation · EBU R 128",
+      "https://tech.ebu.ch/docs/r/r128.pdf"
+    ],
+    "priv": [
+      "Privacy Principles · W3C",
+      "https://www.w3.org/TR/privacy-principles/"
+    ],
+    "eval": [
+      "Ranking evaluation · Elastic",
+      "https://www.elastic.co/guide/en/elasticsearch/reference/current/search-rank-eval.html"
+    ],
+    "edit": [
+      "Editing · Yale Film Analysis",
+      "https://filmanalysis.yale.edu/editing/"
+    ],
+    "time": [
+      "Date and Time on the Internet · RFC 3339",
+      "https://www.rfc-editor.org/rfc/rfc3339"
+    ]
+  },
+  "cards": [
     {
-      "id": "career-throughline",
-      "lane": "about",
-      "title": "From post-production to streaming operations",
-      "source": "Portfolio career profile",
-      "sourceUrl": "https://www.linkedin.com/in/chrisjrovira/",
-      "content": "Chris Rovira has spent more than twenty years across media and technology. He began close to the craft in video editing, audio engineering, and post-production, then moved toward partner integrations, content delivery, and streaming operations. The through-line is making complex handoffs easier for the teams doing the work and the viewers at the end of it."
+      "group": "Streaming delivery",
+      "id": "playlist",
+      "title": "Reading a live playlist",
+      "aliases": [
+        "hls",
+        "manifest",
+        "playlist",
+        "segments",
+        "live edge",
+        "buffering"
+      ],
+      "principle": "A player discovers media through a playlist. A master playlist describes variants. A media playlist gives the segments for one rendition. A successful playlist request proves only the first step in playback.",
+      "practice": "Follow one variant to its media playlist. Read consecutive media sequence numbers and durations, then play across a segment boundary. Repeat on the affected device class.",
+      "example": "A fictional garden channel opens on a laptop but stalls on a small player. Compare the same variant and segment window before changing the encoder.",
+      "check": "The media sequence advances across refreshes, new segments arrive in time, and the player crosses the suspect boundary.",
+      "ref": "hls"
     },
     {
-      "id": "roku-role",
-      "lane": "about",
-      "title": "Senior Technical Operations Manager at Roku",
-      "source": "Roku résumé supplied by Chris; public role description",
-      "content": "Chris Rovira's supplied résumé identifies his current title as Senior Technical Operations Manager at Roku in Austin, Texas, from November 2020 to present. It lists progression through Technical Operations Associate, Senior Technical Operations Associate, and Technical Operations Manager. His public portfolio describes his work at a high level as streaming technical operations, launch readiness, partner coordination, and delivery reliability. Specific Roku operating procedures, internal tools, partner configurations, and unpublished performance details are intentionally not included here."
+      "group": "Streaming delivery",
+      "id": "renditions",
+      "title": "Testing an adaptive switch",
+      "aliases": [
+        "adaptive bitrate",
+        "abr",
+        "rendition",
+        "variant",
+        "switch"
+      ],
+      "principle": "Adaptive playback changes quality as bandwidth changes. A switch can fail when two individually playable renditions disagree about timing or declared codecs.",
+      "practice": "Pick adjacent variants. Compare their timelines and declarations. Constrain bandwidth, allow a switch in both directions, and inspect audio continuity.",
+      "example": "Two invented renditions play alone. Only a downward switch repeats half a sentence. Check alignment around that cut before lowering every bitrate.",
+      "check": "Capture a real switch with continuous picture and sound at the same program moment in both directions.",
+      "ref": "hls"
     },
     {
-      "id": "roku-resume-achievements",
-      "lane": "about",
-      "title": "Roku launches and event programs",
-      "source": "Roku résumé supplied by Chris",
-      "content": "Chris's supplied résumé lists launch readiness and operations support for Discovery+ Premium Subscriptions, Paramount+, Howdy Mexico, Peacock, Fox One, Apple TV Mexico, Max Mexico, and Tennis Channel. It also lists content and event operations for WEIRD, Spiderwick, Formula E, and the FIFA World Cup. These names describe team launches and programs he supported, not sole ownership. Keep public discussion at this high level; do not disclose internal workflows, partner configurations, staffing, operational metrics, or unpublished outcomes.",
-      "inventoryAnswer": "The reviewed résumé and portfolio notes name these launch and event examples. At Roku, Chris supported launch readiness and operations for Discovery+ Premium Subscriptions, Paramount+, Howdy Mexico, Peacock, Fox One, Apple TV Mexico, Max Mexico, and Tennis Channel, and content or event operations for WEIRD, Spiderwick, Formula E, and the FIFA World Cup. Earlier notes list support for AT&T TV NOW and AT&T TV launches, and launch work across Netflix, iTunes, and Amazon at Viacom. These describe team contributions; they do not claim sole ownership."
+      "group": "Streaming delivery",
+      "id": "captions",
+      "title": "Finding the boundary of caption drift",
+      "aliases": [
+        "caption",
+        "subtitles",
+        "webvtt",
+        "drift",
+        "vtt"
+      ],
+      "principle": "A constant caption offset and an offset that grows over time point to different checks. The first can follow an initial timestamp error. The second calls for duration and time-base comparisons.",
+      "practice": "Choose an audible word near the start, middle and end. Compare cue start to speech at all three points, then repeat after a seek or discontinuity.",
+      "example": "In a fictional short film the first caption lands on time. By the closing line it leads the speaker. Shifting the whole file would move the opening out of sync.",
+      "check": "Check the same three points and a seek with captions enabled on the intended player. Confirm cues remain readable and complete.",
+      "ref": "tt"
     },
     {
-      "id": "roku-ai-operations-platform",
-      "lane": "about",
-      "title": "Applied AI and operations product direction",
-      "source": "Roku résumé supplied by Chris; public-safe summary",
-      "content": "Chris's supplied résumé describes product direction and workflow design for AI-assisted operations. The public-safe summary is that the work explored ways to help operations teams organize evidence, investigation, and escalation. Do not describe internal product names, implementation details, deployment, adoption, scale, or outcomes without a separately approved public source."
+      "group": "Streaming delivery",
+      "id": "audio-selection",
+      "title": "Verifying audio tracks",
+      "aliases": [
+        "audio track",
+        "language track",
+        "alternate audio",
+        "descriptive audio",
+        "audio description"
+      ],
+      "principle": "Visible language labels and audible media are separate parts of track selection. A correct label can still lead to the wrong rendition.",
+      "practice": "Compare the track label, declared language, default flags and audio group. Select each track, identify a known passage, then change quality and seek.",
+      "example": "An invented short offers narration on a second audio track. Its menu label is correct, but selecting it plays the main mix after a quality switch.",
+      "check": "A listener can select the intended track, hear its distinctive passage, and keep that selection through the transition.",
+      "ref": "hls"
     },
     {
-      "id": "att-live-launch",
-      "lane": "about",
-      "title": "AT&T TV launch support",
-      "source": "Résumé-based portfolio story · AT&T Entertainment Group",
-      "content": "As an Integration Manager and Content & Programming Manager at AT&T Entertainment Group, Chris supported the AT&T TV NOW and AT&T TV launches, coordinating content, partner details, and team handoffs. His portfolio does not claim sole ownership or a quantified launch outcome."
+      "group": "Operations & releases",
+      "id": "triage",
+      "title": "Narrowing a playback incident",
+      "aliases": [
+        "triage",
+        "incident",
+        "isolate",
+        "root cause"
+      ],
+      "principle": "Start with one precise symptom and a comparison that changes one variable. Record observable impact separately from a suspected cause.",
+      "practice": "Choose an affected item, a control item, a device class and a time window. Hold three fixed while changing the fourth. Identify the earliest boundary where results diverge.",
+      "example": "An invented player shows a spinner for one program. The prior program plays on the same connection. Use that contrast to narrow the next check.",
+      "check": "A second observer can repeat the comparison and identify which boundary still needs evidence.",
+      "ref": "sre"
     },
     {
-      "id": "att-scte224",
-      "lane": "about",
-      "title": "SCTE 224 workflows for regional sports networks",
-      "source": "Résumé-based portfolio story · AT&T Entertainment Group",
-      "sourceUrl": "https://www.linkedin.com/in/chrisjrovira/",
-      "content": "Chris integrated SCTE 224 workflows for regional sports networks. That integration work connected rights and availability information with the metadata and delivery processes that determine when and where programming can be shown. The profile does not assign a specific network or quantified outcome."
+      "group": "Operations & releases",
+      "id": "recovery",
+      "title": "Proving a fix reached the viewer",
+      "aliases": [
+        "recovery",
+        "verify a fix",
+        "restoration",
+        "viewer impact",
+        "monitoring"
+      ],
+      "principle": "A successful change request confirms the system accepted work. Recovery also requires a fresh observation from the part of the service the audience uses.",
+      "practice": "Save the original symptom and scope. Check the changed input, the next consumer, and a fresh viewer session. Include one unaffected control.",
+      "example": "A fictional catalog record is corrected at its source. An older copy still appears in the player. Check the next refresh before declaring recovery.",
+      "check": "The original journey succeeds from a fresh session and a control still behaves normally. Record what remains untested.",
+      "ref": "mon"
     },
     {
-      "id": "att-career",
-      "lane": "about",
-      "title": "Partner integrations and platform launches",
-      "source": "Portfolio career profile · AT&T Entertainment Group",
-      "sourceUrl": "https://www.linkedin.com/in/chrisjrovira/",
-      "content": "At AT&T Entertainment Group, Chris worked as an Integration Manager and Content & Programming Manager from November 2016 to February 2020. The portfolio profile notes DIRECTV NOW and AT&T TV launch support, live channel onboarding, and SCTE 224 workflows for regional sports networks."
+      "group": "Operations & releases",
+      "id": "release",
+      "title": "Choosing a stop condition",
+      "aliases": [
+        "rollout",
+        "canary",
+        "rollback",
+        "release gate",
+        "launch readiness"
+      ],
+      "principle": "A small release is informative when the early group sees representative traffic and a defined signal can stop further rollout.",
+      "practice": "Choose a viewer-facing measure, a comparable control group, a minimum observation window and an action if the measure worsens.",
+      "example": "A fictional player update looks healthy on menus. The early rollout excludes long playback sessions. Extend the observation before expanding exposure.",
+      "check": "The comparison includes the risky behavior and a second operator can use the same rule to proceed, hold or reverse.",
+      "ref": "canary"
     },
     {
-      "id": "viacom-career",
-      "lane": "about",
-      "title": "Digital video and international distribution",
-      "source": "Portfolio career profile · Viacom International",
-      "sourceUrl": "https://www.linkedin.com/in/chrisjrovira/",
-      "content": "At Viacom International, Chris worked in partner management and supervising editing for VOD, DTO, and SVOD between March 2011 and September 2016. His profile describes leading editor and delivery workflows, onboarding partners, and supporting international distribution for services including Netflix, iTunes, and Amazon."
+      "group": "Operations & releases",
+      "id": "handoff",
+      "title": "Writing an incident handoff",
+      "aliases": [
+        "handoff",
+        "status update",
+        "incident update",
+        "escalation",
+        "partner coordination"
+      ],
+      "principle": "A handoff lets the next person act without rediscovering the symptom. Separate observations, hypotheses and the work still open.",
+      "practice": "Write the impact in plain language. Add the smallest reproducible check, time window, evidence location, owner role and next decision point.",
+      "example": "A fictional night shift finds captions missing on one rendition. Hand over the exact comparison and the pending downstream check.",
+      "check": "An incoming operator can run the named check and knows what finding would change the next action.",
+      "ref": "sre"
     },
     {
-      "id": "media-ops-approach",
-      "lane": "about",
-      "title": "How Chris approaches media operations",
-      "source": "Portfolio operating principle",
-      "sourceUrl": "https://chrisjrovira.com/#about",
-      "content": "Chris brings technical detail and human context into the same conversation. His operating principle is to make handoffs feel invisible: people know what comes next, systems stay dependable, and viewers stay with the story. His earlier editing and post-production experience helps him keep quality and the audience in view while teams work through tools, metadata, deadlines, and delivery requirements."
+      "group": "Catalog & metadata",
+      "id": "identity",
+      "title": "Matching a title to the right edition",
+      "aliases": [
+        "episode identity",
+        "title match",
+        "edition",
+        "duplicate",
+        "catalog id"
+      ],
+      "principle": "Similar titles can describe different works, cuts or episodes. Prefer stable identifiers within their declared namespace and use independent fields to confirm the edition.",
+      "practice": "Compare source identifiers, series membership, episode position, language, duration and cut. Put contradictory records into a review queue.",
+      "example": "Two fictional specials share a title. One is a recap and the other a full episode. Their durations differ and only one belongs in the season sequence.",
+      "check": "The chosen record resolves to the expected edition across both systems. Document the deciding field and preserve the alternate record.",
+      "ref": "dc"
     },
     {
-      "id": "rag-basics",
-      "lane": "learn",
-      "title": "RAG in one minute",
-      "source": "Lewis et al., Retrieval-Augmented Generation (2020)",
-      "sourceUrl": "https://arxiv.org/abs/2005.11401",
-      "content": "Retrieval-Augmented Generation (RAG) combines a language model with an external collection of knowledge. First retrieve relevant passages for a question, then add those passages to the model's context, then generate an answer grounded in them. Retrieval supplies changeable or private-to-the-project knowledge without retraining the language model. A useful analogy from streaming operations: find the right approved assets and metadata before assembling the final delivery."
+      "group": "Catalog & metadata",
+      "id": "duration",
+      "title": "Reconciling conflicting runtimes",
+      "aliases": [
+        "runtime",
+        "duration",
+        "frame rate",
+        "scheduled slot"
+      ],
+      "principle": "A schedule slot, an editorial running time and the measured media duration answer different questions. Compare fields only after identifying their definitions and units.",
+      "practice": "Trace each value to its source. Convert to the same unit, inspect rounding and compare against the delivered cut including credits.",
+      "example": "A fictional program occupies a half-hour slot. Its delivered episode ends several minutes earlier. The schedule alone cannot decide the playback runtime.",
+      "check": "The consumer field names the intended concept and agrees with a measured or editorially confirmed value for that cut.",
+      "ref": "dc"
     },
     {
-      "id": "rag-pipeline",
-      "lane": "learn",
-      "title": "The RAG pipeline: prepare, retrieve, ground",
-      "source": "OpenAI File Search guide · concepts apply beyond the OpenAI product",
-      "sourceUrl": "https://developers.openai.com/api/docs/guides/tools-file-search",
-      "content": "A practical retrieval pipeline starts with trusted source documents. Split them into coherent chunks, keep useful metadata such as source and date, and index the chunks for search. At question time, retrieve a small set of relevant chunks, give those chunks to the language model as reference material, and show citations. Keeping the source and metadata attached is like preserving asset identity and version information through a media delivery workflow."
+      "group": "Catalog & metadata",
+      "id": "provenance",
+      "title": "Tracing a stale field",
+      "aliases": [
+        "provenance",
+        "lineage",
+        "stale metadata",
+        "source of truth",
+        "cache"
+      ],
+      "principle": "When copies disagree, trace one field through each transformation. A newer timestamp may describe an import time while the field itself came from an older source.",
+      "practice": "Match the record identity, capture each field value and its effective timestamp, then compare the transform and refresh boundary where values first diverge.",
+      "example": "A fictional synopsis is correct upstream and old in search. Inspect the exported record and search refresh separately before editing the source again.",
+      "check": "After refresh, the same record and field agree at the intended boundaries. Preserve the evidence for the first divergence.",
+      "ref": "prov"
     },
     {
-      "id": "embeddings",
-      "lane": "learn",
-      "title": "Embeddings and semantic search",
-      "source": "Cloudflare Workers AI · text embeddings",
-      "sourceUrl": "https://developers.cloudflare.com/workers-ai/models/embedding/",
-      "content": "An embedding maps text into a numeric vector whose position captures aspects of meaning. A vector search can find a passage that means something similar even when it uses different words from the question. Keyword search is still useful for exact names, titles, channel brands, dates, and acronyms. Many practical systems combine semantic and keyword search, then rerank a short list before generation."
+      "group": "Catalog & metadata",
+      "id": "availability",
+      "title": "Checking a schedule boundary",
+      "aliases": [
+        "availability window",
+        "time zone",
+        "timezone",
+        "schedule window",
+        "midnight"
+      ],
+      "principle": "A local calendar day and a UTC interval can straddle different dates. A release also needs an explicit convention for the start and end of its window.",
+      "practice": "Write the intended zone, convert both endpoints, and exercise just before, exactly at and just after each edge. Include daylight-saving changes when relevant.",
+      "example": "A fictional evening screening crosses midnight. Its listing disappears early because a local date was interpreted as a UTC midnight.",
+      "check": "The listing and player agree with the intended inclusive or exclusive rule on both edges, in the audience zone.",
+      "ref": "time"
     },
     {
-      "id": "rag-evaluation",
-      "lane": "learn",
-      "title": "How to evaluate a RAG assistant",
-      "source": "RAGAS · evaluation framework for RAG systems",
-      "sourceUrl": "https://arxiv.org/abs/2309.15217",
-      "content": "Evaluate retrieval and answer generation separately. Retrieval should return useful, relevant passages; the answer should respond to the question, stay faithful to retrieved evidence, and say when the evidence is missing. Keep a small set of realistic questions, expected source passages, and unsupported questions as an evaluation set. For a career assistant, test whether it refuses to invent a launch contribution as well as whether it can explain a documented one."
+      "group": "Editorial & finishing",
+      "id": "continuity",
+      "title": "Checking a picture edit for continuity",
+      "aliases": [
+        "continuity",
+        "cut",
+        "picture edit",
+        "eyeline",
+        "editing"
+      ],
+      "principle": "Continuity depends on what the viewer follows. Screen direction, eyeline and the timing of an action can make two technically clean shots feel disconnected.",
+      "practice": "Watch the cut at normal speed without sound. Identify the point of attention in each shot, then check the motion across the cut frame by frame.",
+      "example": "In a fictional scene a bird reaches for a seed. The reverse angle starts with the seed already lifted. Move the cut to a shared phase of the action.",
+      "check": "A first-time viewer follows the gesture at normal speed. Watch again with sound to catch a newly awkward audio transition.",
+      "ref": "edit"
     },
     {
-      "id": "ml-vs-rag",
-      "lane": "learn",
-      "title": "RAG is not model training",
-      "source": "Lewis et al., Retrieval-Augmented Generation (2020)",
-      "sourceUrl": "https://arxiv.org/abs/2005.11401",
-      "content": "RAG usually does not change the model's learned weights. It retrieves relevant material at answer time and puts it in the prompt. Fine-tuning changes model weights to shape behavior or task performance; it is not the right way to keep a résumé or project list current. Keep fast-changing facts in the retrieval library, and use carefully reviewed fine-tuning only when you need consistent task behavior that prompts cannot provide."
+      "group": "Editorial & finishing",
+      "id": "loudness",
+      "title": "Comparing loudness and peaks",
+      "aliases": [
+        "loudness",
+        "volume",
+        "true peak",
+        "mix",
+        "audio level"
+      ],
+      "principle": "Integrated loudness describes a whole program. True peak measures short peaks. Two mixes can share one measure and differ on the other.",
+      "practice": "Identify the delivery specification, measure the complete program and check true peaks. Listen to quiet speech and the loudest transition on a representative device.",
+      "example": "A fictional short meets its integrated target but a slammed door clips after encoding. Inspect that transient and recheck the encoded deliverable.",
+      "check": "The finished file meets the destination specification and dialogue stays understandable in the intended listening context.",
+      "ref": "loud"
     },
     {
-      "id": "creative-filmography",
-      "lane": "about",
-      "title": "Film and post-production credits",
-      "source": "IMDb pages confirmed by Chris",
-      "sourceUrl": "https://www.imdb.com/name/nm2474609/",
-      "content": "Chris confirmed that the IMDb pages nm2474609 and nm8298914 belong to him. He began his career in video editing, audio engineering, and post-production. His filmography links are https://www.imdb.com/name/nm2474609/ and https://www.imdb.com/name/nm8298914/. Do not infer specific credits or roles unless they appear on the linked pages."
+      "group": "Editorial & finishing",
+      "id": "descriptions",
+      "title": "Making visual storytelling audible",
+      "aliases": [
+        "described video",
+        "describing visuals",
+        "accessible media",
+        "describing action"
+      ],
+      "principle": "When essential story information is visual, decide how a listener can learn it. Describe the action in a natural gap or build the information into the original narration.",
+      "practice": "Listen without looking. List the missing facts needed to follow the story, find spaces for concise descriptions, then listen again with dialogue and music.",
+      "example": "In a fictional scene a character hides a map without speaking. A short description in a pause explains why the search in the next scene matters.",
+      "check": "A listener can follow the change without guessing and the description leaves essential dialogue audible.",
+      "ref": "av"
     },
     {
-      "id": "oneirodex-project",
-      "lane": "about",
-      "title": "Oneirodex personal project",
-      "source": "Oneirodex repository and portfolio project notes",
-      "sourceUrl": "https://github.com/cephyrixzyth/Oneirodex",
-      "content": "Oneirodex is Chris's self-hosted game library for a household. The project pairs a Flask service with a React interface for discovery, sharing, and play. A companion website explains the product with interface captures, captioned walkthroughs, and a feature guide: https://github.com/cephyrixzyth/Oneirodex-Website."
+      "group": "Editorial & finishing",
+      "id": "delivery-qc",
+      "title": "Checking the exported master",
+      "aliases": [
+        "qc",
+        "export",
+        "mastering",
+        "quality control",
+        "delivery master"
+      ],
+      "principle": "A timeline preview and an exported file can differ. Check the same artifact that will actually be handed off and play through its risky boundaries.",
+      "practice": "Inspect container, picture, audio tracks, caption presence and runtime. Watch the opening, closing, scene changes and any points changed since the last export.",
+      "example": "A fictional master looks fine in the editor, but the final export omits its second audio track. Inspect the track inventory and play that version.",
+      "check": "A reviewer can identify the exact export checked, open it independently and verify the destination requirements.",
+      "ref": "ff"
     },
     {
-      "id": "launch-role-boundary",
-      "lane": "about",
-      "title": "How to describe launch involvement accurately",
-      "source": "Résumé wording supplied by Chris",
-      "content": "Chris's launch experience is team-based operational support across multiple services and events. Describe his contribution as launch readiness or operations support unless a source explicitly documents a more specific role, such as co-leading. Do not turn a company announcement into evidence of his personal involvement, imply sole ownership, infer results, or add dates and numbers not present in the résumé."
+      "group": "Product & accessibility",
+      "id": "keyboard",
+      "title": "Designing a keyboard journey",
+      "aliases": [
+        "keyboard",
+        "focus",
+        "tab",
+        "accessibility",
+        "screen reader"
+      ],
+      "principle": "Keyboard users need to reach each action, activate it and recover their place. An obvious visual button can still have an inaccessible name or unusable focus order.",
+      "practice": "Complete the main task using Tab, Shift+Tab, Enter and Space as appropriate. Check visible focus, meaningful names and where focus returns after dismissal.",
+      "example": "A fictional filter panel closes after a choice but focus jumps to the top. Return it to the control that opened the panel.",
+      "check": "The same task works without a pointer, with a visible focus indicator and a predictable next Tab stop.",
+      "ref": "wcag"
+    },
+    {
+      "group": "Product & accessibility",
+      "id": "print",
+      "title": "Designing a useful print view",
+      "aliases": [
+        "print",
+        "printable",
+        "paper",
+        "print css"
+      ],
+      "principle": "Paper has fixed edges and loses interactions. A usable print view makes the document subject, reading order and essential artwork explicit.",
+      "practice": "Choose the intended item, hide navigation, set print margins and check page breaks on both Letter and A4. Inspect the actual preview or exported PDF.",
+      "example": "A fictional activity page prints its whole picker ahead of the selected sheet. Isolate the selected artwork and print its title with it.",
+      "check": "Each supported paper size contains the intended item with a legible title and complete artwork within printable bounds.",
+      "ref": "print"
+    },
+    {
+      "group": "Product & accessibility",
+      "id": "motion",
+      "title": "Respecting a reduced-motion preference",
+      "aliases": [
+        "reduced motion",
+        "animation",
+        "motion sensitivity",
+        "parallax"
+      ],
+      "principle": "Motion may communicate change, but some viewers require a quieter path. Preserve the meaning of the transition with position, text or a stable state.",
+      "practice": "Enable the system preference before loading the page. Navigate and update the page. Check decorative movement and any motion triggered by interaction.",
+      "example": "A fictional gallery slides cards on every keypress. Under reduced motion it swaps cards directly and keeps the visible selection label.",
+      "check": "The user completes the same task, can identify the selected item and avoids unnecessary movement under the preference.",
+      "ref": "wcag"
+    },
+    {
+      "group": "Product & accessibility",
+      "id": "minimization",
+      "title": "Designing a data-minimal feature",
+      "aliases": [
+        "privacy",
+        "data minimization",
+        "local processing",
+        "personal data"
+      ],
+      "principle": "Start with the decision a feature needs to make. Every additional input creates a handling and retention obligation.",
+      "practice": "List required outputs and work backward to the smallest inputs. Try a local calculation before adding an upload. Check actual network and storage behavior.",
+      "example": "A fictional recommendation tool needs a topic choice. A session-local choice produces the same lesson without recording the visitor’s typed words.",
+      "check": "The feature works with only its declared inputs. Network and persistence checks agree with the interface disclosure.",
+      "ref": "priv"
+    },
+    {
+      "group": "Search & machine learning",
+      "id": "retrieval",
+      "title": "Understanding retrieval-augmented generation",
+      "aliases": [
+        "rag",
+        "retrieval augmented generation",
+        "rag pipeline"
+      ],
+      "principle": "A retrieval system selects passages and supplies them as context to an answer generator. Retrieval can improve grounding only if the passages contain the answer.",
+      "practice": "Trace one question through query handling, retrieval, context assembly and the answer. Inspect the selected passage before tuning the wording of a prompt.",
+      "example": "A fictional library guide must explain borrowing rules. Retrieving the right branch policy matters more than a confident paraphrase of an unrelated rule.",
+      "check": "For a known question, the supporting passage appears in context and the answer agrees with it. An unsupported question receives an explicit gap.",
+      "ref": "rag"
+    },
+    {
+      "group": "Search & machine learning",
+      "id": "ranking",
+      "title": "Choosing lexical or semantic retrieval",
+      "aliases": [
+        "embedding",
+        "embeddings",
+        "semantic search",
+        "keyword search",
+        "ranking",
+        "hybrid search"
+      ],
+      "principle": "Term matching is strong for exact codes and rare names. Embeddings can find paraphrases, but similarity alone does not establish factual relevance.",
+      "practice": "Build a small set of exact-match and paraphrase queries. Compare relevant passages within the same result limit, then inspect disagreements by query type.",
+      "example": "A fictional manual uses a short part code and a plain-language fault description. A combined search may locate both if its ranker is evaluated on both kinds of request.",
+      "check": "The chosen approach improves the intended query group without hiding exact identifiers on the control queries.",
+      "ref": "ir"
+    },
+    {
+      "group": "Search & machine learning",
+      "id": "evaluation",
+      "title": "Separating retrieval and answer quality",
+      "aliases": [
+        "rag evaluation",
+        "evaluation",
+        "grounding",
+        "recall",
+        "precision",
+        "abstention"
+      ],
+      "principle": "A fluent answer can hide a retrieval miss. Score passage selection and answer support separately, and include questions the collection cannot answer.",
+      "practice": "Annotate which passages can answer a small test set. Measure how often an adequate passage is retrieved, then assess claims against those passages and track abstentions.",
+      "example": "In a fictional FAQ, an answer picks the wrong return window even though the correct passage ranked first. Changing retrieval alone would miss the error.",
+      "check": "A report identifies retrieval misses, unsupported claims and incorrect abstentions separately. Repeat the same test set after a change.",
+      "ref": "eval"
+    },
+    {
+      "group": "Search & machine learning",
+      "id": "training",
+      "title": "Choosing retrieval or model training",
+      "aliases": [
+        "fine tuning",
+        "fine-tuning",
+        "training",
+        "model training",
+        "weights",
+        "knowledge update"
+      ],
+      "principle": "Retrieval changes which material a system can consult at answer time. Training changes model parameters. Different failure modes call for different experiments.",
+      "practice": "If facts change often, test updating a small collection. If the failure is a stable task behavior, compare instructions and examples before considering a training run.",
+      "example": "A fictional club changes its opening hours each season. Updating the approved source and checking its retrieval gives a direct way to inspect the current answer.",
+      "check": "Use held-out examples and stale-fact questions to determine which change helped. Record failures as well as improvements.",
+      "ref": "rag"
     }
   ]
 }
-

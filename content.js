@@ -4,7 +4,6 @@ window.PORTFOLIO_CONTENT = {
     {
       id: "streaming-operations",
       category: "streaming",
-      number: "01",
       eyebrow: "STREAMING OPERATIONS · CURRENT ROLE",
       title: "The work behind a dependable stream.",
       description: "I work across technical operations, partner coordination, and service readiness for a streaming platform. My focus is helping teams coordinate clearly and support a dependable viewer experience.",
@@ -18,7 +17,6 @@ window.PORTFOLIO_CONTENT = {
     {
       id: "oneirodex",
       category: "building",
-      number: "02",
       eyebrow: "PERSONAL PROJECT · FULL-STACK",
       title: "A home library with room to play.",
       description: "Oneirodex is a self-hosted game library for a household, pairing a Flask service with a React interface for discovery, sharing, and play.",
@@ -32,13 +30,12 @@ window.PORTFOLIO_CONTENT = {
     {
       id: "oneirodex-web",
       category: "building",
-      number: "03",
       eyebrow: "PRODUCT STORY · ONEIRODEX WEBSITE",
       title: "A clear window into the product.",
       description: "I built the companion site to make Oneirodex easier to understand before you open the app: real interface captures, short captioned walkthroughs, and a feature guide you can explore at your own pace.",
       tags: ["Responsive web", "Product storytelling", "Frontend"],
-      href: "https://github.com/cephyrixzyth/Oneirodex-Website",
-      linkLabel: "See website repo",
+      href: "work/oneirodex/index.html",
+      linkLabel: "Read the case study",
       visual: "website-visual",
       mark: "WEB",
       featured: false
@@ -46,7 +43,6 @@ window.PORTFOLIO_CONTENT = {
     {
       id: "launches",
       category: "streaming",
-      number: "04",
       eyebrow: "PLATFORM LAUNCHES · AT&T / VIACOM",
       title: "A live lineup, ready for launch.",
       description: "Earlier in my career, I supported AT&T TV NOW and AT&T TV launches, coordinating content, partner details, and team handoffs through complex service rollouts.",

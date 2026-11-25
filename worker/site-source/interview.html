@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Interview brief · Christopher Rovira</title>
+<meta name="description" content="Build a 15- or 30-minute conversation with three questions and a public reading.">
+<meta property="og:image" content="https://chrisjrovira.com/interview/art/film-and-prism-960.webp">
+<link rel="canonical" href="https://chrisjrovira.com/interview/" />
+<link rel="stylesheet" href="brief.css">
+</head>
+<body class="portfolio">
+<a href="#choices" class="skip">Skip to choices</a>
+<header>
+<strong>Christopher Rovira</strong>
+<a href="../index.html">Portfolio</a>
+</header>
+<main>
+<div class="cover">
+<div class="lead">
+<h1>Interview brief</h1>
+<p>Choose a topic and the time you have. Take three questions and a public reference into the conversation.</p>
+</div>
+<figure>
+<img alt="A film strip curves from a metal editing wheel toward a glass prism." src="art/film-and-prism-960.webp" srcset="art/film-and-prism-480.webp 480w, art/film-and-prism-960.webp 960w" sizes="(max-width: 650px) 95vw, 480px" width="960" height="640">
+</figure>
+</div>
+<div class="work">
+<form id="choices" hidden>
+<fieldset>
+<legend>Choose your options</legend>
+<label for="topic">What would you like to discuss?</label>
+<select id="topic" name="topic">{{topics}}</select>
+<label for="minutes">How much time?</label>
+<select id="minutes" name="minutes">{{minutes}}</select>
+</fieldset>
+</form>
+<noscript>
+<p>Here is a ready-to-use example. Enable JavaScript to change the choices. You can print this page from your browser.</p>
+</noscript>
+<div class="output">
+<p class="output-label">Your discussion brief</p>
+<article id="result">{{agenda}}</article>
+<div id="actions" hidden>
+<button type="button" id="print">Print brief</button>
+<button type="button" id="save">Save brief</button>
+</div>
+</div>
+</div>
+<p id="status" class="sr" role="status">
+</p>
+</main>
+<script type="application/json" id="settings">{{settings}}</script>
+<script src="brief.js" defer>
+</script>
+</body>
+</html>

@@ -1,144 +1,67 @@
 (() => {
-  const content = window.PORTFOLIO_CONTENT;
   const projectGrid = document.querySelector("#project-grid");
-  const experienceList = document.querySelector("#experience-list");
-  const skillCloud = document.querySelector("#skill-cloud");
-  const credentialsList = document.querySelector("#credentials-list");
-  const storyMedia = document.querySelector("#story-media");
-  const storyDetail = document.querySelector("#story-detail");
-  const storyIndex = document.querySelector("#story-index");
-  const storyCount = document.querySelector("#story-count");
-
-  const projectCard = (project) => `
-    <article class="project-card ${project.featured ? "project-featured" : ""}" data-category="${project.category}">
-      <div class="project-visual ${project.visual}">
-        <div class="visual-grid" aria-hidden="true"></div>
-        <div class="visual-mark" aria-hidden="true">${project.mark}</div>
-        <span class="visual-number mono">${project.number} / ${String(content.projects.length).padStart(2, "0")}</span>
-        ${project.id === "streaming-operations" ? `<div class="visual-pills"><span>READINESS</span><span>PARTNERS</span><span>DELIVERY</span></div><div class="visual-monitor"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>` : ""}
-        ${project.id === "oneirodex" ? `<div class="mini-library"><span>✳</span><span>◉</span><span>✦</span><span>◈</span><span>⌁</span></div><div class="library-label mono">ONEIRODEX / HOME LIBRARY</div>` : ""}
-        ${project.id === "oneirodex-web" ? `<div class="web-preview"><span class="web-preview-nav"></span><span class="web-preview-title"></span><span class="web-preview-title web-preview-title-short"></span><span class="web-preview-button"></span><span class="web-preview-shot"><i></i><i></i><i></i></span></div><div class="library-label mono">A PRODUCT STORY, MADE CLEAR</div>` : ""}
-        ${project.id === "launches" ? `<div class="launch-visual-lines"><span>01 / INGEST</span><span>02 / PREPARE</span><span>03 / PLAY</span></div><div class="launch-spark" aria-hidden="true">✳</div>` : ""}
-      </div>
-      <div class="project-body">
-        <div class="project-eyebrow mono"><span></span>${project.eyebrow}</div>
-        <h3>${project.title}</h3>
-        <p>${project.description}</p>
-        <div class="tag-row">${project.tags.map((tag) => `<span>${tag}</span>`).join("")}</div>
-        <a class="project-link" href="${project.href}" target="_blank" rel="noreferrer">${project.linkLabel}<span aria-hidden="true">↗</span></a>
-      </div>
-    </article>`;
-
-  function renderProjects(filter = "all") {
-    const visible = content.projects.filter((project) => filter === "all" || project.category === filter);
-    projectGrid.innerHTML = visible.map(projectCard).join("");
-    projectGrid.classList.toggle("is-filtered", filter !== "all");
-  }
-
-  function storyPoster(story, index) {
-    return `
-      <div class="story-poster ${story.visual}" role="img" aria-label="Artwork for ${story.shortTitle}; a full-width video can be added for this story">
-        <div class="story-poster-grid" aria-hidden="true"></div>
-        <span class="story-poster-brand mono">CJR <i>·</i> FIELD NOTES</span>
-        <span class="story-poster-number" aria-hidden="true">${String(index + 1).padStart(2, "0")}</span>
-        <div class="story-poster-copy"><span class="mono">${story.eyebrow}</span><strong>${story.shortTitle}</strong></div>
-        <span class="story-poster-hint"><i aria-hidden="true"></i> No clip linked yet · story first</span>
-      </div>`;
-  }
-
-  function renderStory(index = 0) {
-    if (!content.stories?.length || !storyMedia || !storyDetail || !storyIndex || !storyCount) return;
-    const story = content.stories[index];
-    const media = story.media;
-    let mediaMarkup = storyPoster(story, index);
-    if (media?.type === "video" && media.src) {
-      const poster = media.poster ? ` poster="${media.poster}"` : "";
-      mediaMarkup = `<video class="story-video" controls playsinline preload="metadata"${poster}><source src="${media.src}" />Your browser does not support embedded video.</video>`;
-    } else if (media?.type === "embed" && media.src) {
-      mediaMarkup = `<iframe class="story-video" src="${media.src}" title="${story.title}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+  const filters = [...document.querySelectorAll("[data-filter]")];
+  document.querySelector(".filter-row").hidden = false;
+  filters.forEach(button => button.addEventListener("click", () => {
+    filters.forEach(chip => {
+      chip.classList.toggle("is-active", chip === button);
+      chip.setAttribute("aria-pressed", String(chip === button));
+    });
+    const category = button.dataset.filter;
+    for (const card of projectGrid.children) {
+      card.hidden = category !== "all" && category !== card.dataset.category;
     }
-    storyMedia.innerHTML = mediaMarkup;
-    storyDetail.innerHTML = `
-      <div class="story-detail-top"><p class="eyebrow"><span class="eyebrow-line"></span>${story.eyebrow}</p><p class="story-highlight">${story.highlight}</p></div>
-      <h3>${story.title}</h3>
-      <div class="story-detail-copy">${story.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>
-      ${story.links?.length ? `<div class="story-detail-links" aria-label="Related links">${story.links.map((link) => `<a class="text-link" href="${link.url}" target="_blank" rel="noreferrer">${link.label} <span aria-hidden="true">↗</span></a>`).join("")}</div>` : ""}`;
-    storyCount.textContent = `STORY ${String(index + 1).padStart(2, "0")} OF ${String(content.stories.length).padStart(2, "0")}`;
-    storyIndex.querySelectorAll("[data-story-index]").forEach((button) => {
-      const active = Number(button.dataset.storyIndex) === index;
-      button.setAttribute("aria-pressed", String(active));
-      button.classList.toggle("is-active", active);
-      if (active) {
-        const track = button.parentElement;
-        const left = button.offsetLeft - track.offsetLeft - (track.clientWidth - button.clientWidth) / 2;
-        track.scrollTo({ left, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
-      }
+    projectGrid.classList.toggle("is-filtered", category !== "all");
+  }));
+
+  const links = [...document.querySelectorAll("[data-story-index]")];
+  const chapters = links.map(link => document.getElementById(link.hash.slice(1)));
+  const count = document.getElementById("story-count");
+  let current = 0;
+  function selectChapter(index) {
+    current = index;
+    chapters.forEach((chapter, i) => {
+      chapter.hidden = i !== index;
+      links[i].classList.toggle("is-active", i === index);
+      if (i === index) links[i].setAttribute("aria-current", "true");
+      else links[i].removeAttribute("aria-current");
+      if (chapter.hidden) chapter.querySelector("video")?.pause();
     });
-    storyMedia.dataset.activeStory = story.id;
+    count.textContent = "STORY " + String(index + 1).padStart(2, "0") + " OF " + String(chapters.length).padStart(2, "0");
+    const active = links[index], rail = active.parentElement;
+    rail.scrollLeft += active.getBoundingClientRect().left - rail.getBoundingClientRect().left - (rail.clientWidth - active.clientWidth) / 2;
   }
-
-  function renderStoryIndex() {
-    if (!storyIndex || !content.stories?.length) return;
-    storyIndex.innerHTML = content.stories.map((story, index) => `
-      <button class="story-index-item ${index === 0 ? "is-active" : ""}" type="button" data-story-index="${index}" aria-pressed="${index === 0}">
-        <span class="story-index-number mono">${String(index + 1).padStart(2, "0")}</span>
-        <span class="story-index-copy"><strong>${story.shortTitle}</strong><span>${story.eyebrow}</span></span>
-        <span class="story-index-arrow" aria-hidden="true">↗</span>
-      </button>`).join("");
-    storyIndex.addEventListener("click", (event) => {
-      const button = event.target.closest("[data-story-index]");
-      if (button) renderStory(Number(button.dataset.storyIndex));
-    });
-    storyIndex.addEventListener("keydown", (event) => {
-      if (!(["ArrowLeft", "ArrowRight"].includes(event.key))) return;
-      const current = event.target.closest("[data-story-index]");
-      if (!current) return;
-      event.preventDefault();
-      const direction = event.key === "ArrowRight" ? 1 : -1;
-      const next = (Number(current.dataset.storyIndex) + direction + content.stories.length) % content.stories.length;
-      renderStory(next);
-      storyIndex.querySelector(`[data-story-index="${next}"]`)?.focus();
-    });
-    renderStory();
+  function selectFromHash() {
+    const index = links.findIndex(link => link.hash === location.hash || "#" + link.id === location.hash);
+    selectChapter(index < 0 ? 0 : index);
   }
-
-  function renderExperience() {
-    experienceList.innerHTML = content.experience.map((item, index) => `
-      <article class="timeline-item ${item.current ? "is-current" : ""}">
-        <div class="timeline-rail"><span class="timeline-dot"></span>${index < content.experience.length - 1 ? `<span class="timeline-stem"></span>` : ""}</div>
-        <div class="timeline-content">
-          <div class="timeline-top"><span class="timeline-date mono">${item.dates}</span>${item.current ? `<span class="current-badge"><i></i> PROFILE ROLE</span>` : ""}</div>
-          <h3>${item.company}</h3><div class="timeline-role">${item.title}</div><p>${item.summary}</p>
-          <details class="timeline-details"><summary>What that looked like <span aria-hidden="true">+</span></summary><ul>${item.points.map((point) => `<li>${point}</li>`).join("")}</ul></details>
-        </div>
-      </article>`).join("");
+  function go(index) {
+    const next = (index + chapters.length) % chapters.length;
+    if (location.hash !== links[next].hash) history.pushState(null, "", links[next].hash);
+    selectChapter(next);
   }
-
-  renderProjects();
-  renderStoryIndex();
-  renderExperience();
-  skillCloud.innerHTML = content.skills.map((skill) => `<span>${skill}</span>`).join("");
-  credentialsList.innerHTML = content.credentials.map((item) => `<li>${item}</li>`).join("");
-
-  document.querySelectorAll(".filter-chip").forEach((button) => {
-    button.addEventListener("click", () => {
-      document.querySelectorAll(".filter-chip").forEach((chip) => {
-        const active = chip === button;
-        chip.classList.toggle("is-active", active);
-        chip.setAttribute("aria-pressed", String(active));
+  if (links.length) {
+    document.querySelector(".story-rail-controls").hidden = false;
+    selectFromHash();
+    window.addEventListener("hashchange", selectFromHash);
+    window.addEventListener("popstate", selectFromHash);
+    links.forEach((link, index) => {
+      link.addEventListener("click", event => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        go(index);
+        chapters[index].focus({preventScroll:true});
       });
-      renderProjects(button.dataset.filter);
+      link.addEventListener("keydown", event => {
+        if (!["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+        event.preventDefault();
+        go(index + (event.key === "ArrowLeft" ? -1 : 1));
+        links[current].focus({preventScroll:true});
+      });
     });
-  });
-
-  document.querySelector("#story-previous")?.addEventListener("click", () => {
-    const active = Number(storyMedia?.dataset.activeStory ? content.stories.findIndex((story) => story.id === storyMedia.dataset.activeStory) : 0);
-    renderStory((active - 1 + content.stories.length) % content.stories.length);
-  });
-  document.querySelector("#story-next")?.addEventListener("click", () => {
-    const active = Number(storyMedia?.dataset.activeStory ? content.stories.findIndex((story) => story.id === storyMedia.dataset.activeStory) : 0);
-    renderStory((active + 1) % content.stories.length);
-  });
+    document.getElementById("story-previous").addEventListener("click", () => go(current - 1));
+    document.getElementById("story-next").addEventListener("click", () => go(current + 1));
+  }
 
   const root = document.documentElement;
   const themePicker = document.querySelector(".theme-picker");
@@ -183,6 +106,9 @@
     menuButton.setAttribute("aria-expanded", "false");
     menuButton.setAttribute("aria-label", "Open navigation");
   };
+  window.matchMedia("(min-width: 681px)").addEventListener("change", (event) => {
+    if (event.matches) closeMenu();
+  });
   menuButton.addEventListener("click", () => {
     const open = menuButton.getAttribute("aria-expanded") !== "true";
     mobileMenu.hidden = !open;
@@ -192,7 +118,10 @@
   mobileMenu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-      closeMenu();
+      if (!mobileMenu.hidden) {
+        closeMenu();
+        menuButton.focus();
+      }
       if (themePicker.open) {
         themePicker.open = false;
         themePicker.querySelector("summary").focus();
@@ -229,16 +158,4 @@
     sections.forEach((section) => observer.observe(section));
   }
 
-  const revealItems = document.querySelectorAll(".fact, .project-card, .story-viewer, .timeline-item, .expertise-panel");
-  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    revealItems.forEach((item) => { item.classList.add("reveal-ready"); revealObserver.observe(item); });
-  }
 })();

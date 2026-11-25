@@ -1,0 +1,3 @@
+.edits {display:grid; grid-template-columns:1fr 1fr; gap:22px} .edits figure {margin:8px 0} .edits h2 {font-size:1.4rem} .frame {width:100%;aspect-ratio:3/2;overflow:hidden;background:#302333}
+.frame img {width:100%;height:100%;object-fit:cover} .frame.wheel img {transform:scale(2.1);transform-origin:16% 58%} .frame.prism img {transform:scale(2);transform-origin:82% 48%}
+input[type=range] {display:block;width:min(520px,100%);accent-color:#63416a} #time {min-height:42px} @media(max-width:550px){.edits{grid-template-columns:1fr}.edits h2{margin-top:1rem}}

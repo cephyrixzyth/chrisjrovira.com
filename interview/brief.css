@@ -1,0 +1,65 @@
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.55 "DM Sans",system-ui,sans-serif}
+.portfolio{--paper:#f7f3ef;--ink:#2a202a;--accent:#63416a;--panel:#fffdf9;--line:#cebfca;--wash:#eee5eb;--title:Georgia,"Times New Roman",serif}
+header,main{max-width:1080px;margin:auto}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:19px clamp(18px,4vw,42px);border-bottom:1px solid var(--line)}
+header strong{font-size:1.12rem}
+header span,figcaption{font-size:.82rem}
+main{padding:clamp(19px,4vw,42px)}
+.cover{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:34px}
+.lead h1{font:600 clamp(2.5rem,5.4vw,4.6rem)/1.02 var(--title);letter-spacing:-.052em;margin:0 0 .23em}
+.portfolio h1{font-weight:400}
+.lead p{font-size:1.14rem;max-width:40ch;margin:0}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;aspect-ratio:3/2;border-radius:12px}
+.portfolio figure img{border-radius:1px}
+figcaption{margin:.3em 0;text-align:right;color:var(--accent)}
+.work{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.7fr);align-items:start;gap:clamp(18px,4vw,44px);margin:32px 0}
+.work form{padding:20px 0;border-top:2px solid var(--accent)}
+fieldset{border:0;margin:0;padding:0}
+legend,.output-label{font-size:.84rem;font-weight:700;letter-spacing:.025em;color:var(--accent);margin:0 0 12px;padding:0}
+label{display:block;margin:18px 0 5px;font-weight:600}
+select,button{font:inherit;min-height:44px}
+select{width:100%;background:var(--panel);color:var(--ink);padding:8px;border:1px solid var(--line);border-radius:5px}
+.output{background:var(--panel);border:1px solid var(--line);padding:clamp(18px,3vw,32px);border-radius:10px}
+.portfolio .output{border-radius:0;border-top:3px solid var(--accent)}
+h2{font:600 clamp(1.45rem,3vw,2.1rem)/1.18 var(--title);letter-spacing:-.03em;margin:0 0 12px}
+.intro{margin:0 0 19px}
+.output ol{margin:0;padding-left:1.55em}
+.output li{padding:9px 0 12px 4px;border-top:1px solid var(--line)}
+.output li::marker{color:var(--accent);font-weight:700}
+h3{margin:0;font-size:1rem}
+.output li p,.end p{margin:3px 0}
+.end{margin-top:16px;padding:12px;background:var(--wash)}
+a{color:var(--accent);text-underline-offset:.15em}
+#actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+button{cursor:pointer;padding:8px 14px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:5px}
+#print{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+[hidden]{display:none!important}
+.skip,.sr{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden}
+.skip:focus{z-index:3;top:8px;left:8px;width:auto;height:auto;clip-path:none;background:var(--panel);padding:6px}
+@media(max-width:650px){.cover,.work{grid-template-columns:1fr;gap:16px}
+.work{margin-top:18px}
+.cover figure{max-width:460px}
+.work form{padding:12px 0}
+.lead p{font-size:1rem}
+.output{min-width:0}
+.work legend{margin:0}
+.work label{margin-top:12px}
+}
+@media print{@page{size:auto;margin:15mm}
+body{--ink:#111;--paper:white;--panel:white;--line:#777;--wash:white;--accent:#222;color:#111;background:white;font:11pt/1.35 Georgia,serif}
+.cover,#choices,#actions,.skip,.sr,noscript,header span,header a{display:none!important}
+header,main{max-width:none;padding:0}
+header{margin-bottom:12pt}
+header strong{font-size:12pt}
+.work{display:block;margin:0}
+.portfolio .output{padding:0;border:0;background:white}
+h2{font-size:19pt}
+h3{font-size:12pt}
+.output li{padding-block:8pt;break-inside:avoid}
+.output-label{color:#222}
+.end{padding:7pt 0}
+.output a{color:#111}
+}
