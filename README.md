@@ -19,3 +19,10 @@ Dark mode is the initial theme. Visitors can choose Light, Forest, Ocean, Sunset
 ## Publishing
 
 GitHub Pages publishes the repository root on `main`. `_config.yml` excludes documentation, private source material, and runtime folders from the public Pages build. Keep any supplied credentials out of the repository and deployment artifacts.
+## Release and review status
+
+The reviewed November 17 portfolio implementation is published from `main`. The local review records passing source generation checks, an 11-route safe-mode Pages build, browser journeys, accessibility checks, print checks, and an optional coach test double. Its full evidence archive is maintained separately from the public Pages output.
+
+The production Pages build for commit `a4bff080e6923b74382a7d500d84ea4e9e4af09c` completed successfully on November 24, 2026. The homepage, résumé, Oneirodex case, interview brief, practice guide, practice rehearsal, edit comparison, and work journal returned HTTP 200 at the live domain. The separate production Worker health endpoint returned HTTP 200; its retired `/api/chat` route returned HTTP 404. The new practice guide leaves its optional coach endpoint blank by default and runs locally in the browser.
+
+Before treating the presentation as fully approved, the owner should review the new presentation, artwork, and exercise choices, and a first-time hiring manager should try the site. Production Worker readback for the optional `/api/coach` contract remains outstanding. These are release acceptance items, not claims that the local verification failed.
