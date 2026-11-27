@@ -250,6 +250,9 @@ h1 { margin: 24px 0 21px; font-size: clamp(58px, 7.8vw, 100px); line-height: .98
 .stream-visual { background: radial-gradient(ellipse at 63% 36%, rgba(192, 132, 252, .3), transparent 47%), #15111b; }
 .library-visual { background: radial-gradient(ellipse at 50% 45%, rgba(45, 177, 151, .2), transparent 55%), #11191a; }
 .website-visual { background: radial-gradient(ellipse at 50% 45%, rgba(115, 105, 231, .26), transparent 58%), #12131d; }
+.audio-visual { background: radial-gradient(ellipse at 50% 45%, rgba(255, 154, 99, .24), transparent 56%), #181817; }
+.mini-wave { position: absolute; top: 24%; left: 50%; display: flex; align-items: center; gap: 5px; width: 62%; height: 34%; transform: translateX(-50%); }
+.mini-wave i { flex: 1; min-height: 6px; border-radius: 3px; background: linear-gradient(180deg, #ffb48b, #ff6a2b); opacity: .85; }
 .launch-visual { background: radial-gradient(ellipse at 70% 36%, rgba(251, 113, 133, .24), transparent 48%), #191218; }
 .visual-number { z-index: 2; color: rgba(255, 255, 255, .63); font-size: 8px; letter-spacing: .1em; }
 .visual-mark { position: absolute; top: 50%; left: 50%; z-index: -1; color: rgba(220, 194, 247, .1); font-family: Manrope, sans-serif; font-size: clamp(130px, 20vw, 232px); font-weight: 800; letter-spacing: -.12em; line-height: 1; transform: translate(-54%, -55%); }
