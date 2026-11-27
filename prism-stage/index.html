@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="theme-color" content="#09080d" />
+    <meta name="description" content="Roam a living, stylized 3D Austin after dark. Walk, fly, and enter five iconic live music rooms." />
+    <title>Prism Stage — Austin afterimage</title>
+    <link rel="stylesheet" href="prism.css" />
+    <link rel="stylesheet" href="explore.css" />
+    <script>
+      if (location.protocol === 'file:') {
+        window.addEventListener('DOMContentLoaded', () => {
+          const message = document.createElement('aside');
+          message.className = 'webgl-error';
+          message.setAttribute('role', 'alert');
+          message.textContent = 'This page was opened as a local file. Start it with start-prism-stage.ps1 so the 3D scene can load.';
+          document.getElementById('world')?.append(message);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <main class="world" id="world">
+      <canvas id="scene" aria-label="Navigable 3D Austin night world with five live music venues"></canvas>
+      <div class="grain" aria-hidden="true"></div>
+      <header class="mast">
+        <a class="brand" href="#home" aria-label="Prism Stage home"><span class="brand-glyph">✳</span><span>PRISM<br>STAGE</span></a>
+        <div class="mast-center"><span class="live"><i></i> NIGHT SHIFT IN PROGRESS</span><span class="mast-divider"></span><span>AUSTIN, TEXAS <b>30°16′N</b></span></div>
+        <div class="mast-actions"><button class="level-toggle" id="level-toggle" type="button" aria-pressed="false">DROP TO STREET <span>↓</span></button><a class="studio-link" href="http://127.0.0.1:4863/" target="_blank" rel="noopener">OPEN THE STUDIO <span>↗</span></a></div>
+      </header>
+
+      <section class="map-title" id="map-title">
+        <span class="overline">A PRISM STAGE FIELD TRIP / NO. 001</span>
+        <h1>AUSTIN<br><em>AFTERIMAGE</em></h1>
+        <p>Five rooms. One very strange night.<br>Walk it, fly it, or drift through time.</p>
+      </section>
+
+      <section class="street-hud" id="street-hud" aria-live="polite" hidden>
+        <span class="overline">AUSTIN AFTER DARK / LIVE 3D WORLD</span>
+        <h1 id="street-venue-name">THE CONTINENTAL</h1>
+        <span class="street-area" id="street-area">SOUTH CONGRESS</span>
+        <p id="street-instructions">Walk the block. Find the light leaking under the door.</p>
+        <button class="street-enter" id="street-enter" type="button">STEP INSIDE <span>↗</span></button>
+      </section>
+
+      <div class="map-stamp" id="map-stamp"><span>LIVE MUSIC<br>CAPITAL*</span><b>ATX</b><small>*in a parallel dimension</small></div>
+      <div class="map-coordinate" id="map-coordinate">30° 16′ 2″ N<br>97° 44′ 35″ W<br><span>SCHEMATIC / NOT TO SCALE</span></div>
+
+      <aside class="venue-readout" aria-live="polite" aria-atomic="true">
+        <div class="readout-top"><span class="venue-count" id="venue-count">STOP 01 / 05</span><span class="readout-pulse"></span></div>
+        <span class="venue-era" id="venue-era">SOUTH CONGRESS · SINCE 1955</span>
+        <h2 id="venue-name">THE<br>CONTINENTAL</h2>
+        <p class="venue-tag" id="venue-tag">A little room. A bottomless night.</p>
+        <div class="readout-rule"></div>
+        <p class="venue-description" id="venue-description">An intimate South Congress landmark gets folded into a pocket-sized light machine. Roots, rockabilly and a ceiling that forgot about the sky.</p>
+        <button class="enter-button" id="enter-button">STEP INSIDE <span>↗</span></button>
+      </aside>
+
+      <div class="scene-label" id="scene-label" aria-live="polite"><span>YOU ARE INSIDE</span><b id="scene-label-name">THE CONTINENTAL</b></div>
+      <button class="back-button" id="back-button" hidden>LEAVE ROOM / RETURN TO THE NIGHT ROUTE</button>
+      <div class="scene-whisper" id="scene-whisper" hidden>THE WALLS HAVE LEARNED A NEW TRICK</div>
+
+      <nav class="route" aria-label="Choose an Austin venue">
+        <div class="route-label"><span>TONIGHT'S ROUTE</span><span class="route-arrow">5 ROOMS / 1 ROUTE</span></div>
+        <div class="route-stops" id="route-stops"></div>
+      </nav>
+
+      <div class="controls-hint" id="controls-hint"><span>DRAG</span> ORBIT <i>·</i> <span>WHEEL</span> ZOOM <i>·</i> <span>← →</span> PICK <i>·</i> <span>G</span> WALK <i>·</i> <span>F</span> FLY <i>·</i> <span>ENTER</span> ENTER ROOM</div>
+      <div class="walk-hint" id="walk-hint" hidden><span>W A S D</span> WALK <i>·</i> <span>DRAG</span> LOOK <i>·</i> <span>E</span> INTERACT</div>
+      <div class="walkpad" id="walkpad" aria-label="Street movement controls" hidden>
+        <button type="button" data-move="forward" aria-label="Move forward">↑</button>
+        <div><button type="button" data-move="left" aria-label="Move left">←</button><button type="button" data-move="down" aria-label="Move lower">−</button><button type="button" data-move="right" aria-label="Move right">→</button><button type="button" data-move="up" aria-label="Move higher">+</button></div>
+      </div>
+      <div class="mode-chip" id="mode-chip"><i></i> ROUTE MODE</div>
+      <div class="studio-tab"><span>MAKE YOUR OWN ROOMS</span><a href="http://127.0.0.1:4863/" target="_blank" rel="noopener">PRISM STAGE STUDIO ↗</a></div>
+      <noscript><p class="noscript">This little night drive needs JavaScript. It’s worth it.</p></noscript>
+    </main>
+    <script type="module" src="world3d.js"></script>
+  </body>
+</html>
