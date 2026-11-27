@@ -14,6 +14,7 @@ const visuals = {
   'stream-visual': '<div class="visual-pills"><span>READINESS</span><span>PARTNERS</span><span>DELIVERY</span></div><div class="visual-monitor">' + '<i></i>'.repeat(11) + '</div>',
   'library-visual': '<div class="mini-library"><span>✳</span><span>◉</span><span>✦</span><span>◈</span><span>⌁</span></div><div class="library-label mono">ONEIRODEX / HOME LIBRARY</div>',
   'website-visual': '<div class="web-preview"><span class="web-preview-nav"></span><span class="web-preview-title"></span><span class="web-preview-title web-preview-title-short"></span><span class="web-preview-button"></span><span class="web-preview-shot"><i></i><i></i><i></i></span></div><div class="library-label mono">ONEIRODEX WEBSITE</div>',
+  'audio-visual': '<div class="mini-wave">' + [28,52,36,70,44,86,58,40,74,48,30,62,38,22].map(h => `<i style="height:${h}%"></i>`).join('') + '</div><div class="library-label mono">AUDIOTHECA / AUDIO LIBRARY</div>',
   'launch-visual': '<div class="launch-visual-lines"><span>01 / INGEST</span><span>02 / PREPARE</span><span>03 / PLAY</span></div><div class="launch-spark">✳</div>'
 };
 function projectCard(project, index) {

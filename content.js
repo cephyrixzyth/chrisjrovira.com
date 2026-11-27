@@ -41,6 +41,19 @@ window.PORTFOLIO_CONTENT = {
       featured: false
     },
     {
+      id: "audiotheca",
+      category: "building",
+      eyebrow: "PERSONAL PROJECT · AUDIOTHECA",
+      title: "Order for a sprawling audio library.",
+      description: "Audiotheca scans large plugin, sample and installer libraries, identifies vendors, finds true duplicates and plans a cleaner layout, with a dry run before anything moves. Its showcase site lets you try a scan in the browser.",
+      tags: ["Python + React", "Self-hosted", "Interactive web"],
+      href: "Audiotheca/",
+      linkLabel: "Explore Audiotheca",
+      visual: "audio-visual",
+      mark: "AT",
+      featured: false
+    },
+    {
       id: "launches",
       category: "streaming",
       eyebrow: "PLATFORM LAUNCHES · AT&T / VIACOM",
