@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en" data-theme="tape-room">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audiotheca · Order for sprawling audio libraries</title>
+  <meta name="description" content="Audiotheca scans, identifies, deduplicates and reorganizes large VST, sample and installer libraries. Self-hosted on Unraid, Docker, or Windows. Dry run by default.">
+  <meta property="og:title" content="Audiotheca">
+  <meta property="og:description" content="Scan, identify, deduplicate and reorganize large audio-software libraries. Self-hosted. Dry run by default.">
+  <meta property="og:image" content="https://chrisjrovira.com/Audiotheca/assets/shots/ui-overview.webp">
+  <meta property="og:url" content="https://chrisjrovira.com/Audiotheca/">
+  <link rel="canonical" href="https://chrisjrovira.com/Audiotheca/">
+  <meta name="theme-color" content="#181817">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar" id="top">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="Audiotheca home">
+        <img src="assets/logo.png" alt="" width="32" height="32">
+        <span>Audiotheca</span>
+      </a>
+      <nav class="mainnav" id="mainnav" aria-label="Sections">
+        <a href="#demo">Demo</a>
+        <a href="#features">Features</a>
+        <a href="#tour">Tour</a>
+        <a href="#preview">Preview</a>
+        <a href="#themes">Themes</a>
+        <a href="#install">Install</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="topbar-actions">
+        <a class="btn btn-ghost btn-sm" href="https://github.com/cephyrixzyth/Audiotheca" rel="noopener">GitHub</a>
+        <button class="btn btn-ghost btn-sm menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainnav">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <canvas id="heroWave" class="hero-wave" aria-hidden="true"></canvas>
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span> v1.0.12 · Engine 10 · now in Unraid Community Apps</p>
+          <h1>Bring order to a sprawling audio library.</h1>
+          <p class="lede">Audiotheca walks your VST, sample and installer folders, works out who made what, peeks inside archives without extracting them, finds true duplicates and plans a clean vendor layout. You see every move before anything touches a disk.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#install">Install Audiotheca</a>
+            <a class="btn btn-ghost" href="#demo">Try the dry run ↓</a>
+          </div>
+          <ul class="hero-points">
+            <li>Dry run by default</li>
+            <li>Nothing permanently deleted</li>
+            <li>Runs on your hardware</li>
+          </ul>
+        </div>
+        <figure class="hero-shot" data-lightbox="assets/shots/ui-overview.webp" data-caption="Workspace stations, recent scans and review queues.">
+          <div class="window">
+            <div class="window-bar"><i></i><i></i><i></i><span>localhost:4210 · Dashboard</span></div>
+            <img src="assets/shots/ui-overview.webp" alt="Audiotheca dashboard showing the library workspace, recent scans and review queues" width="1440" height="900">
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="stats wrap" aria-label="At a glance">
+      <div class="stat"><b data-count="94">94</b><span>architecture spec codes shipped</span></div>
+      <div class="stat"><b data-count="22">22</b><span>illustrated built-in themes</span></div>
+      <div class="stat"><b data-count="12">12</b><span>guided video walkthroughs</span></div>
+      <div class="stat"><b>0</b><span>files moved until you say so</span></div>
+    </section>
+
+    <!-- DEMO -->
+    <section class="section" id="demo">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Interactive demo</p>
+          <h2>Run a dry scan on a messy library</h2>
+          <p class="section-lede">This is a toy library of ten items, the kind of pile that builds up over years of downloads. Press run and watch Audiotheca's phases work through it. Everything here happens in your browser.</p>
+        </div>
+
+        <div class="demo">
+          <div class="demo-panel demo-before">
+            <div class="panel-head">
+              <h3>Library root</h3>
+              <code>/library/_software/_audio</code>
+            </div>
+            <ul class="tree" id="demoTree"></ul>
+            <div class="demo-controls">
+              <label class="switch">
+                <input type="checkbox" id="dryToggle" checked>
+                <span class="track"><span class="thumb"></span></span>
+                <span class="switch-label">Dry run</span>
+              </label>
+              <button class="btn btn-primary" id="runScan">Run dry scan</button>
+              <button class="btn btn-ghost btn-sm" id="resetScan" hidden>Reset</button>
+            </div>
+          </div>
+
+          <div class="demo-panel demo-phases">
+            <div class="panel-head"><h3>Processing flow</h3><span class="mono muted" id="demoEta">idle</span></div>
+            <ol class="phases" id="phaseList"></ol>
+            <pre class="log" id="demoLog" aria-live="polite"></pre>
+          </div>
+
+          <div class="demo-panel demo-after">
+            <div class="panel-head">
+              <h3>Review</h3>
+              <div class="seg" role="tablist" id="resultTabs">
+                <button role="tab" aria-selected="true" data-tab="routes">Routes</button>
+                <button role="tab" aria-selected="false" data-tab="dupes">Duplicates</button>
+                <button role="tab" aria-selected="false" data-tab="investigate">Investigate</button>
+              </div>
+            </div>
+            <div class="results" id="results">
+              <p class="empty">Run the scan to see proposed moves, duplicate groups and anything that needs a human.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section section-alt" id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">What it does</p>
+          <h2>Built for libraries that outgrew manual cleanup</h2>
+          <p class="section-lede">Often on slow network shares, often thousands of items deep. Audiotheca was designed for exactly that.</p>
+        </div>
+        <div class="features">
+          <article class="feature">
+            <span class="feature-ico" aria-hidden="true">⌕</span>
+            <h3>Identify vendors and products</h3>
+            <p>Filenames, PE headers, NFO and readme text, archive listings and an optional AI lookup for stubborn unknowns, each with a confidence tier.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-ico" aria-hidden="true">▤</span>
+            <h3>Peek inside archives</h3>
+            <p>List <code>.rar</code>, <code>.7z</code>, <code>.iso</code> and <code>.zip</code> contents without extracting. Handles scene-hash folders, multipart sets and archive-plus-extracted pairs.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-ico" aria-hidden="true">⧉</span>
+            <h3>Strict duplicate matching</h3>
+            <p>Not naive name matching. Groups by product identity and hash, tells version upgrades apart from true copies, and lets you pick the keeper.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-ico" aria-hidden="true">⇢</span>
+            <h3>Plan a vendor layout</h3>
+            <p>Preview every proposed move into vendor folders, approve by section or by item, and execute only what you signed off.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-ico" aria-hidden="true">∿</span>
+            <h3>Audition and mix</h3>
+            <p>Waveforms with LUFS, BPM and key badges in the library explorer, plus a spatial studio to arrange clips in a 3D room and export a stereo WAV.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-ico" aria-hidden="true">⛨</span>
+            <h3>Security and space recovery</h3>
+            <p>Malware heuristics, ClamAV deep scan, quarantine and shred, SHA-256 lookups, plus hardlink and bloat plans to win back disk space.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOUR -->
+    <section class="section" id="tour">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Product tour</p>
+          <h2>Every station in the workspace</h2>
+          <p class="section-lede">Real screenshots from the 1.0.12 web UI, captured against a disposable demo library. Click any image to enlarge it.</p>
+        </div>
+        <div class="tour">
+          <div class="tour-nav" role="tablist" id="tourNav"></div>
+          <div class="tour-stage">
+            <figure class="tour-figure" id="tourFigure">
+              <div class="window">
+                <div class="window-bar"><i></i><i></i><i></i><span id="tourUrl">localhost:4210</span></div>
+                <img id="tourImg" src="assets/shots/ui-overview.webp" alt="" width="1440" height="900">
+              </div>
+              <figcaption id="tourCaption"></figcaption>
+            </figure>
+            <div class="tour-sub" id="tourSub"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="section section-alt" id="walkthroughs">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Walkthroughs</p>
+          <h2>Watch the real workflows</h2>
+          <p class="section-lede">Twelve short captures, straight from the documentation. Pick one from the list.</p>
+        </div>
+        <div class="player">
+          <div class="player-screen">
+            <video id="video" controls muted playsinline preload="metadata" poster="assets/shots/scan-panel.webp">
+              <source id="videoSrc" src="assets/videos/first-scan-walkthrough.mp4" type="video/mp4">
+            </video>
+            <p class="player-caption" id="videoCaption"></p>
+          </div>
+          <ol class="playlist" id="playlist"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUDIO PREVIEW -->
+    <section class="section" id="preview">
+      <div class="wrap preview-grid">
+        <div class="section-head">
+          <p class="eyebrow">Audio preview</p>
+          <h2>Hear it before you route it</h2>
+          <p class="section-lede">In the library explorer, select a WAV, MP3 or FLAC and the inspector draws its waveform, measures loudness and estimates tempo and key. The preview session lets you change tempo and pitch to audition a loop against your project. This little player is synthesized live in your browser to show the idea.</p>
+          <ul class="ticks">
+            <li>Waveform strip on every audio row</li>
+            <li>LUFS, BPM and key badges</li>
+            <li>Tempo sync and pitch from the preview session</li>
+            <li>Carry a selected range into the studio mix</li>
+          </ul>
+        </div>
+        <div class="inspector" id="inspector">
+          <div class="insp-head">
+            <div>
+              <p class="mono muted small">/library/Samples/AcmeAudio/Loops/</p>
+              <h3 class="mono" id="inspFile">kick_120bpm_C.wav</h3>
+            </div>
+            <div class="badges" id="inspBadges">
+              <span class="badge">−14.2 LUFS</span>
+              <span class="badge" id="badgeBpm">120 BPM</span>
+              <span class="badge" id="badgeKey">C maj</span>
+            </div>
+          </div>
+          <div class="loop-pick" role="radiogroup" aria-label="Loop">
+            <button class="chip" role="radio" aria-checked="true" data-loop="kick">kick_120bpm_C.wav</button>
+            <button class="chip" role="radio" aria-checked="false" data-loop="keys">glass_keys_Am.wav</button>
+            <button class="chip" role="radio" aria-checked="false" data-loop="pulse">brush_pulse_D.wav</button>
+          </div>
+          <canvas id="waveCanvas" class="wave" height="140" aria-label="Waveform of the selected loop"></canvas>
+          <div class="insp-controls">
+            <button class="btn btn-primary" id="playBtn" aria-pressed="false">▶ Play</button>
+            <label class="slider">
+              <span>Tempo <b class="mono" id="tempoVal">120</b></span>
+              <input type="range" id="tempo" min="80" max="160" value="120">
+            </label>
+            <label class="slider">
+              <span>Pitch <b class="mono" id="pitchVal">0 st</b></span>
+              <input type="range" id="pitch" min="-6" max="6" value="0">
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THEMES -->
+    <section class="section section-alt" id="themes">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Theme studio</p>
+          <h2>Twenty-two rooms to work in</h2>
+          <p class="section-lede">Each built-in theme comes with its own illustrated room. Pick one below and this page switches to the same palette the app uses.</p>
+        </div>
+        <div class="themes" id="themeGrid" role="radiogroup" aria-label="Theme"></div>
+      </div>
+    </section>
+
+    <!-- INSTALL -->
+    <section class="section" id="install">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Install</p>
+          <h2>Run it where your library lives</h2>
+          <p class="section-lede">One container for a NAS, a portable build for Windows, or the source for tinkerers.</p>
+        </div>
+        <div class="install">
+          <div class="seg seg-lg" role="tablist" id="installTabs">
+            <button role="tab" aria-selected="true" data-pane="unraid">Unraid</button>
+            <button role="tab" aria-selected="false" data-pane="docker">Docker</button>
+            <button role="tab" aria-selected="false" data-pane="windows">Windows</button>
+            <button role="tab" aria-selected="false" data-pane="source">From source</button>
+          </div>
+
+          <div class="pane" data-pane="unraid">
+            <ol class="steps">
+              <li><b>Open the Apps tab</b> on your Unraid server and search for <code>Audiotheca</code>.</li>
+              <li><b>Map Library</b> to the share you want to scan, for example <code>/mnt/user/audio</code>. It mounts read-only at <code>/library</code> by default.</li>
+              <li><b>Set API token and Proxy secret</b> to two different long random strings. Use the generator in the Docker tab, or <code>openssl rand -hex 32</code>.</li>
+              <li><b>Open the WebUI</b> on port 4210 and start with a dry scan.</li>
+            </ol>
+            <p class="muted">Template source: <a href="https://github.com/cephyrixzyth/unraid-templates/tree/main/audiotheca" rel="noopener">cephyrixzyth/unraid-templates</a>. Keep appdata on cache or SSD storage.</p>
+          </div>
+
+          <div class="pane" data-pane="docker" hidden>
+            <div class="builder">
+              <div class="builder-fields">
+                <label>Library path on host<input id="fLib" value="/mnt/user/audio" spellcheck="false"></label>
+                <label>Appdata path on host<input id="fData" value="/mnt/user/appdata/audiotheca" spellcheck="false"></label>
+                <label>Web UI port<input id="fPort" value="4210" inputmode="numeric"></label>
+                <label class="check"><input type="checkbox" id="fRw"> Allow live moves (mount library read/write)</label>
+                <button class="btn btn-ghost btn-sm" id="regen">Generate new secrets</button>
+              </div>
+              <div class="code-block">
+                <button class="copy" data-copy="#dockerCmd">Copy</button>
+                <pre><code id="dockerCmd"></code></pre>
+              </div>
+            </div>
+            <p class="muted small">Secrets are generated in your browser with <code>crypto.getRandomValues</code> and never leave this page. Image: <code>ghcr.io/cephyrixzyth/audiotheca</code> (all-in-one API and web UI).</p>
+          </div>
+
+          <div class="pane" data-pane="windows" hidden>
+            <ol class="steps">
+              <li><b>Download</b> <code>Audiotheca-Portable-1.0.12-win64.zip</code> from the <a href="https://github.com/cephyrixzyth/Audiotheca/releases/latest" rel="noopener">latest release</a>.</li>
+              <li><b>Extract</b> it anywhere and run <code>Run Audiotheca.bat</code>.</li>
+              <li><b>Install 7-Zip</b> if you want archive peek on <code>.rar</code>, <code>.7z</code> and <code>.iso</code>.</li>
+            </ol>
+            <p class="muted">Desktop builds use Tauri. Check the release page for an asset that matches your system.</p>
+          </div>
+
+          <div class="pane" data-pane="source" hidden>
+            <div class="code-block">
+              <button class="copy" data-copy="#srcCmd">Copy</button>
+<pre><code id="srcCmd">git clone https://github.com/cephyrixzyth/Audiotheca
+cd Audiotheca
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+
+$env:AUDIOTHECA_LIBRARY_ROOT = "D:\YourLibrary\_software\_audio"
+.\start-ui.ps1   # API on 8787, UI on http://localhost:5173</code></pre>
+            </div>
+            <p class="muted small">Needs Python 3.11+, Node.js 24+ for the browser UI, and 7-Zip for archive peek. Prefer the CLI? <code>python main.py --dry-run</code> writes reports to <code>dedupe_reports/</code>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAFETY / ROLLOUT -->
+    <section class="section section-alt" id="safety">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Safety first</p>
+          <h2>A staged rollout, so you never move everything at once</h2>
+          <p class="section-lede">Review the dry-run reports, then step through four stages. Live API calls need <code>confirm_live: true</code> on top of <code>dry_run: false</code>.</p>
+        </div>
+        <div class="rollout">
+          <ol class="stages" id="stages">
+            <li><button aria-pressed="true" data-stage="0"><span>1</span>Restructure and investigation</button></li>
+            <li><button aria-pressed="false" data-stage="1"><span>2</span>Scene renames</button></li>
+            <li><button aria-pressed="false" data-stage="2"><span>3</span>Redundant archives</button></li>
+            <li><button aria-pressed="false" data-stage="3"><span>4</span>Duplicate staging</button></li>
+          </ol>
+          <div class="stage-detail" id="stageDetail"></div>
+        </div>
+        <ul class="guarantees">
+          <li><b>Dry run is the default.</b> With it on, no files move at all.</li>
+          <li><b>No permanent deletion.</b> Duplicates go to <code>_delete-canidates</code> for you to review.</li>
+          <li><b>Localhost API by default</b>, with short-lived access tickets and a path allowlist.</li>
+          <li><b>Built for SMB shares.</b> Depth limits and worker caps avoid network timeouts.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="wrap narrow">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2>Common questions</h2>
+        </div>
+        <details>
+          <summary>Will it delete my files?</summary>
+          <p>No. Suspected duplicates are moved to <code>_delete-canidates</code> at the root of your audio folder, and you delete them yourself. With dry run on, which is the default, nothing moves at all and you only get reports.</p>
+        </details>
+        <details>
+          <summary>Does it work on network drives?</summary>
+          <p>Yes. It was built for high-latency SMB and CIFS shares. Use a conservative worker count (4 to 8) and the default depth limits.</p>
+        </details>
+        <details>
+          <summary>How long does a scan take?</summary>
+          <p>As a rough guide, about 7,200 items on a network share takes 45 to 120 minutes, depending on latency, cache hits and archive peeking. Second runs are faster once the scan cache is warm, and every phase shows an ETA.</p>
+        </details>
+        <details>
+          <summary>Do I need 7-Zip?</summary>
+          <p>For archive peek on <code>.rar</code>, <code>.7z</code> and <code>.iso</code>, yes. <code>.zip</code> works without it. The Docker image already includes what it needs.</p>
+        </details>
+        <details>
+          <summary>Why did two similar folders not group as duplicates?</summary>
+          <p>Matching is deliberately strict. Audiotheca separates version upgrades from same-version copies and only groups items it can tie to the same product, so you are not asked to choose between things that are not really duplicates.</p>
+        </details>
+        <details>
+          <summary>Why the name?</summary>
+          <p>From <i>audio</i> and <i>theca</i>, a case or storage container. It catalogues and shelves a large software library.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta-final">
+      <div class="wrap">
+        <img src="assets/logo.png" alt="" width="64" height="64">
+        <h2>Start with a dry run tonight.</h2>
+        <p>It only reads. You decide what moves.</p>
+        <div class="cta-row center">
+          <a class="btn btn-primary" href="#install">Install Audiotheca</a>
+          <a class="btn btn-ghost" href="https://github.com/cephyrixzyth/Audiotheca/releases/latest" rel="noopener">Release notes</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="brand"><img src="assets/logo.png" alt="" width="24" height="24"><span>Audiotheca</span></div>
+      <nav aria-label="Footer">
+        <a href="https://github.com/cephyrixzyth/Audiotheca" rel="noopener">Source</a>
+        <a href="https://github.com/cephyrixzyth/Audiotheca/tree/main/docs" rel="noopener">Docs</a>
+        <a href="https://github.com/cephyrixzyth/Audiotheca/blob/main/docs/CHANGELOG.md" rel="noopener">Changelog</a>
+        <a href="https://github.com/cephyrixzyth/Audiotheca/issues" rel="noopener">Issues</a>
+      </nav>
+      <p class="muted small">Engine 10.0.0 · Web UI 1.0.12</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <figure><img alt=""><figcaption></figcaption></figure>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
